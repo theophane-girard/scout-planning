@@ -1,6 +1,9 @@
 <mat-drawer-container class="container" autosize>
   <mat-drawer #drawer class="sidenav" mode="side" opened>
-    <p>Auto-resizing sidenav</p>
+    <p>Liste des blocs</p>
+    <div cdkDropList class="example-list" (cdkDropListDropped)="drop($event)">
+      <div class="example-box" *ngFor="let bloc of blocs" cdkDrag>{{bloc.label}}</div>
+    </div>
     <!-- <p *ngIf="showFiller">Lorem, ipsum dolor sit amet consectetur.</p>
     <button (click)="showFiller = !showFiller" mat-raised-button>
       Toggle extra text
@@ -11,7 +14,7 @@
     <!-- <button type="button" mat-button (click)="drawer.toggle()">
       Toggle sidenav
     </button> -->
-    <h1>Planning scouts & guides</h1>
+    <h1 id="app-title">Planning scouts & guides</h1>
   </div>
 
 </mat-drawer-container>
