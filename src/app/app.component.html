@@ -1,20 +1,50 @@
 <mat-drawer-container class="container" autosize>
-  <mat-drawer #drawer class="sidenav" mode="side" opened>
-    <p>Liste des blocs</p>
-    <div cdkDropList class="example-list" (cdkDropListDropped)="drop($event)">
-      <div class="example-box" *ngFor="let bloc of blocs" cdkDrag>{{bloc.label}}</div>
-    </div>
-    <!-- <p *ngIf="showFiller">Lorem, ipsum dolor sit amet consectetur.</p>
-    <button (click)="showFiller = !showFiller" mat-raised-button>
-      Toggle extra text
-    </button> -->
-  </mat-drawer>
+	<mat-drawer #drawer class="sidenav" mode="side" opened>
+		<p>Liste des blocs</p>
+		<div cdkDropList #blocTime="cdkDropList" [cdkDropListData]="timeBlocks" [cdkDropListConnectedTo]="[activityBlocks]"
+			class="example-list" (cdkDropListDropped)="drop($event)">
+			<div class="example-box" *ngFor="let timeBlock of timeBlocks" cdkDrag>{{timeBlock.label}}</div>
+		</div>
+		<!-- <p *ngIf="showFiller">Lorem, ipsum dolor sit amet consectetur.</p>
+		<button (click)="showFiller = !showFiller" mat-raised-button>
+			Toggle extra text
+		</button> -->
+	</mat-drawer>
 
-  <div class="sidenav-content">
-    <!-- <button type="button" mat-button (click)="drawer.toggle()">
-      Toggle sidenav
-    </button> -->
-    <h1 id="app-title">Planning scouts & guides</h1>
-  </div>
+	<div class="sidenav-content">
+		<!-- <button type="button" mat-button (click)="drawer.toggle()">
+			Toggle sidenav
+		</button> -->
+		<h1 id="app-title">Planning scouts & guides</h1>
+		<div fxLayout="row" fxLayoutAlign="space-around center">
+			<div *ngFor="let activityBlock of activityBlocks" cdkDropList #doneList="cdkDropList" [cdkDropListData]="activityBlock" [cdkDropListConnectedTo]="[activityBlocks]"
+				class="example-list" (cdkDropListDropped)="drop($event)">
+				<div class="example-box" *ngFor="let activity of activityBlock.activities" cdkDrag>
+					{{activity.startHour}} - {{activity.endHour}}
+					<br>
+					({{activity.duration}})
+				</div>
+			</div>
+		</div>
+	</div>
 
 </mat-drawer-container>
+
+
+<!-- <div class="example-container">
+	<h2>To do</h2>
+
+	<div cdkDropList #todoList="cdkDropList" [cdkDropListData]="todo" [cdkDropListConnectedTo]="[doneList]"
+		class="example-list" (cdkDropListDropped)="drop($event)">
+		<div class="example-box" *ngFor="let item of todo" cdkDrag>{{item}}</div>
+	</div>
+</div>
+
+<div class="example-container">
+	<h2>Done</h2>
+
+	<div cdkDropList #doneList="cdkDropList" [cdkDropListData]="done" [cdkDropListConnectedTo]="[todoList]"
+		class="example-list" (cdkDropListDropped)="drop($event)">
+		<div class="example-box" *ngFor="let item of done" cdkDrag>{{item}}</div>
+	</div>
+</div> -->

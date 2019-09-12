@@ -3,6 +3,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { DragDropModule } from '@angular/cdk/drag-drop';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule({
     imports:
@@ -10,14 +11,16 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
             MatButtonModule,
             MatCheckboxModule,
             MatSidenavModule,
-            DragDropModule
+            DragDropModule,
+            FlexLayoutModule
         ],
     exports:
         [
             MatButtonModule,
             MatCheckboxModule,
             MatSidenavModule,
-            DragDropModule
+            DragDropModule,
+            FlexLayoutModule
         ],
 })
 export class MaterialModule { }
