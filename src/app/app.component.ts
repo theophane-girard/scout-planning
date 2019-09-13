@@ -50,7 +50,7 @@ export class AppComponent implements OnInit {
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
     } else {
 
-        // event.container.data.push(event)
+        this.timeBlocks.push()
         transferArrayItem(
           event.previousContainer.data,
           event.container.data,

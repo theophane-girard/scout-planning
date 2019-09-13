@@ -19,10 +19,11 @@
 		<div fxLayout="row" fxLayoutAlign="space-around center">
 			<div *ngFor="let activityBlock of activityBlocks" cdkDropList [cdkDropListData]="activityBlock.activities"
 				class="example-list" (cdkDropListDropped)="drop($event)">
+				<h2 class="activity-block-label">{{activityBlock.label}}</h2>
 				<div class="example-box" *ngFor="let activity of activityBlock.activities" cdkDrag>
 					{{activity.startHour}} - {{activity.endHour}}
 					<br>
-					({{activity.duration}})
+					({{time_convert(activity.duration)}})
 				</div>
 			</div>
 		</div>
