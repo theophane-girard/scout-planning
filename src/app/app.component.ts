@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
+import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 import { TimeBlock } from './models/time-block';
 import { ActivityBlock } from './models/activity-block';
 
@@ -32,21 +32,31 @@ export class AppComponent implements OnInit {
     this.activityBlocks = [
       {
         activities: [],
-        title: 'Samedi'
+        label: 'Samedi'
       },
       {
         activities: [],
-        title: 'Dimanche'
+        label: 'Dimanche'
       }
     ]
-    
+
     this.timeBlocks.forEach(bloc => {
       bloc.label = this.time_convert(bloc.duration)
     });
   }
 
   drop(event: CdkDragDrop<string[]>) {
-    moveItemInArray(this.timeBlocks, event.previousIndex, event.currentIndex);
+    if (event.previousContainer === event.container) {
+      moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
+    } else {
+
+        // event.container.data.push(event)
+        transferArrayItem(
+          event.previousContainer.data,
+          event.container.data,
+          event.previousIndex,
+          event.currentIndex);
+    }
   }
 
   time_convert(num) {
@@ -55,7 +65,7 @@ export class AppComponent implements OnInit {
     let minutes = (num - Math.floor(num)) * 60;
     if (hours > 0) {
       result += hours + 'h'
-    } 
+    }
     if (minutes > 0) {
       result += minutes + 'min'
     }

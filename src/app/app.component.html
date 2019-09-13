@@ -1,7 +1,7 @@
-<mat-drawer-container class="container" autosize>
+<mat-drawer-container class="container" autosize cdkDropListGroup>
 	<mat-drawer #drawer class="sidenav" mode="side" opened>
 		<p>Liste des blocs</p>
-		<div cdkDropList #blocTime="cdkDropList" [cdkDropListData]="timeBlocks" [cdkDropListConnectedTo]="[activityBlocks]"
+		<div cdkDropList [cdkDropListData]="timeBlocks"
 			class="example-list" (cdkDropListDropped)="drop($event)">
 			<div class="example-box" *ngFor="let timeBlock of timeBlocks" cdkDrag>{{timeBlock.label}}</div>
 		</div>
@@ -17,7 +17,7 @@
 		</button> -->
 		<h1 id="app-title">Planning scouts & guides</h1>
 		<div fxLayout="row" fxLayoutAlign="space-around center">
-			<div *ngFor="let activityBlock of activityBlocks" cdkDropList #doneList="cdkDropList" [cdkDropListData]="activityBlock" [cdkDropListConnectedTo]="[activityBlocks]"
+			<div *ngFor="let activityBlock of activityBlocks" cdkDropList [cdkDropListData]="activityBlock.activities"
 				class="example-list" (cdkDropListDropped)="drop($event)">
 				<div class="example-box" *ngFor="let activity of activityBlock.activities" cdkDrag>
 					{{activity.startHour}} - {{activity.endHour}}
