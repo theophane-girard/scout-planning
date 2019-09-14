@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TimeBlock } from 'src/app/models/time-block';
 import { CoreFunctionService } from 'src/app/core/core-function.service';
-import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
+import { CdkDragDrop, transferArrayItem, moveItemInArray } from '@angular/cdk/drag-drop';
 
 @Component({
   selector: 'time-block-list',
@@ -10,7 +10,6 @@ import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 })
 export class TimeBlockListComponent implements OnInit {
   timeBlocks: TimeBlock[] = []
-  changes: any;
   constructor() { }
 
   ngOnInit() {
@@ -33,13 +32,34 @@ export class TimeBlockListComponent implements OnInit {
     });
   }
 
-  insertTimeBlock(tmpTimeBlock: TimeBlock, index: number) {
-    if (tmpTimeBlock instanceof TimeBlock) {
-      this.timeBlocks.splice(index, 0, tmpTimeBlock)
+  /**
+   * insert in timeblocks list, last inserted element
+   * @param tmpTimeBlock TimeBlock
+   * @param index number
+   */
+  public insertTimeBlock(tmpTimeBlock: TimeBlock, index: number) {
+    if (tmpTimeBlock.duration) {
+
+      if (tmpTimeBlock.label) {
+
+        this.timeBlocks.splice(index, 0, tmpTimeBlock)
+      } else {
+        console.error('tmpTimeBlock is not a valid TimeBlock', tmpTimeBlock);
+      }
     } else {
       console.error('tmpTimeBlock is not a valid TimeBlock', tmpTimeBlock);
     }
   }
 
-
+  drop(event: CdkDragDrop<any[]>) {
+    if (event.previousContainer === event.container) {
+      moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
+    } else {
+      transferArrayItem(
+        event.previousContainer.data,
+        event.container.data,
+        event.previousIndex,
+        event.currentIndex)
+    }
+  }
 }
