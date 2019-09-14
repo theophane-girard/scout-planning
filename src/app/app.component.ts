@@ -45,17 +45,24 @@ export class AppComponent implements OnInit {
     });
   }
 
-  drop(event: CdkDragDrop<string[]>) {
+  drop(event: CdkDragDrop<any[]>) {
     if (event.previousContainer === event.container) {
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
     } else {
+      let tmpTimeBlock: TimeBlock = {
+        duration: event.previousContainer.data[event.previousIndex].duration,
+        label: event.previousContainer.data[event.previousIndex].label
+      }
+      this.timeBlocks.splice(event.previousIndex, 0, tmpTimeBlock)
+      transferArrayItem(
+        event.previousContainer.data,
+        event.container.data,
+        event.previousIndex,
+        event.currentIndex)
 
-        this.timeBlocks.push()
-        transferArrayItem(
-          event.previousContainer.data,
-          event.container.data,
-          event.previousIndex,
-          event.currentIndex);
+        if (event.container.data.length === 0) {
+          
+        }
     }
   }
 
