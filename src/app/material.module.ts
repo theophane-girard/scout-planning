@@ -6,6 +6,8 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatSliderModule } from '@angular/material/slider';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+
 @NgModule({
     imports:
         [
@@ -15,7 +17,8 @@ import { MatSliderModule } from '@angular/material/slider';
             DragDropModule,
             FlexLayoutModule,
             MatDialogModule,
-            MatSliderModule
+            MatSliderModule,
+            MatProgressSpinnerModule
         ],
     exports:
         [
@@ -25,7 +28,8 @@ import { MatSliderModule } from '@angular/material/slider';
             DragDropModule,
             FlexLayoutModule,
             MatDialogModule,
-            MatSliderModule
+            MatSliderModule,
+            MatProgressSpinnerModule
         ],
 })
 export class MaterialModule { }

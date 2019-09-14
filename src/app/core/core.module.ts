@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { CoreFunctionService } from './core-function.service';
 
 
 
@@ -7,6 +8,7 @@ import { CommonModule } from '@angular/common';
   declarations: [],
   imports: [
     CommonModule
-  ]
+  ],
+  providers:[CoreFunctionService]
 })
-export class TimeBlockListModule { }
+export class CoreModule { }

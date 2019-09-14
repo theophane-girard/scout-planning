@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, AfterViewInit, QueryList } from '@angular/core';
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 import { TimeBlock } from './models/time-block';
 import { ActivityBlock } from './models/activity-block';
+import { CoreFunctionService } from './core/core-function.service';
+import { TimeBlockListComponent } from './side-bar/time-block-list/time-block-list.component';
 
 @Component({
   selector: 'app-root',
@@ -10,24 +12,11 @@ import { ActivityBlock } from './models/activity-block';
 })
 export class AppComponent implements OnInit {
 
-  timeBlocks: TimeBlock[] = []
+  @ViewChild('timeBlockList', { static: false }) timeBlockList: TimeBlockListComponent
   activityBlocks: ActivityBlock[] = []
+  doHideTimeBlock: boolean = true;
 
   ngOnInit(): void {
-    this.timeBlocks = [
-      {
-        duration: 0.25
-      },
-      {
-        duration: 0.5
-      },
-      {
-        duration: 1
-      },
-      {
-        duration: 2
-      }
-    ];
 
     this.activityBlocks = [
       {
@@ -39,10 +28,6 @@ export class AppComponent implements OnInit {
         label: 'Dimanche'
       }
     ]
-
-    this.timeBlocks.forEach(bloc => {
-      bloc.label = this.time_convert(bloc.duration)
-    });
   }
 
   drop(event: CdkDragDrop<any[]>) {
@@ -53,29 +38,21 @@ export class AppComponent implements OnInit {
         duration: event.previousContainer.data[event.previousIndex].duration,
         label: event.previousContainer.data[event.previousIndex].label
       }
-      this.timeBlocks.splice(event.previousIndex, 0, tmpTimeBlock)
+      this.timeBlockList.insertTimeBlock(tmpTimeBlock, event.previousIndex)
       transferArrayItem(
         event.previousContainer.data,
         event.container.data,
         event.previousIndex,
         event.currentIndex)
 
-        if (event.container.data.length === 0) {
-          
-        }
+      if (event.container.data.length === 0) {
+
+      }
     }
   }
 
   time_convert(num) {
-    let result: string = ""
-    let hours = Math.floor(num);
-    let minutes = (num - Math.floor(num)) * 60;
-    if (hours > 0) {
-      result += hours + 'h'
-    }
-    if (minutes > 0) {
-      result += minutes + 'min'
-    }
+    let result = CoreFunctionService.time_convert(num)
     return result
   }
 }
