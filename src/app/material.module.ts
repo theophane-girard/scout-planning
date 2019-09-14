@@ -4,7 +4,8 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { FlexLayoutModule } from '@angular/flex-layout';
-
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatSliderModule } from '@angular/material/slider';
 @NgModule({
     imports:
         [
@@ -12,7 +13,9 @@ import { FlexLayoutModule } from '@angular/flex-layout';
             MatCheckboxModule,
             MatSidenavModule,
             DragDropModule,
-            FlexLayoutModule
+            FlexLayoutModule,
+            MatDialogModule,
+            MatSliderModule
         ],
     exports:
         [
@@ -20,7 +23,9 @@ import { FlexLayoutModule } from '@angular/flex-layout';
             MatCheckboxModule,
             MatSidenavModule,
             DragDropModule,
-            FlexLayoutModule
+            FlexLayoutModule,
+            MatDialogModule,
+            MatSliderModule
         ],
 })
 export class MaterialModule { }
