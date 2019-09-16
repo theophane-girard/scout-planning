@@ -34,13 +34,19 @@ export class AppComponent implements OnInit {
     if (event.previousContainer === event.container) {
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
     } else {
-      // if (doInsertTimeBlock) {
+      if (this.timeBlockList.timeBlocks.length <= 4) {
         let tmpTimeBlock: TimeBlock = {
           duration: event.previousContainer.data[event.previousIndex].duration,
           label: event.previousContainer.data[event.previousIndex].label
         }
         this.timeBlockList.insertTimeBlock(tmpTimeBlock, event.previousIndex)
-      // }
+      } else if (this.timeBlockList.timeBlocks.length > 4) {
+        this.timeBlockList.timeBlocks = this.timeBlockList.timeBlocks.filter((thing, index, self) =>
+          index === self.findIndex((t) => (
+            t.duration === thing.duration && t.label === thing.label
+          ))
+        )
+      }
       transferArrayItem(
         event.previousContainer.data,
         event.container.data,

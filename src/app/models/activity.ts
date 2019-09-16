@@ -1,7 +1,7 @@
-export class Activity {
+import { TimeBlock } from './time-block';
+
+export class Activity extends TimeBlock {
     startHour?: number
     endHour?: number
-    duration: number
-    label?: string
     description?: string
 }
