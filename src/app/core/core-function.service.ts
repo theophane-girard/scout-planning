@@ -7,6 +7,10 @@ export class CoreFunctionService {
 
   constructor() { }
 
+  /**
+   * convert a number to hour/min (2 => 2h; 0.25 => 25min)
+   * @param num numlber to convert
+   */
   static time_convert(num): string {
     let result: string = ""
     let hours = Math.floor(num);
@@ -18,5 +22,9 @@ export class CoreFunctionService {
       result += minutes + 'min'
     }
     return result
+  }
+
+  static getDragOrigin(container) {
+
   }
 }

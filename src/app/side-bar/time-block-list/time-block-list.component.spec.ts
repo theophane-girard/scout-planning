@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { TimeBlockListComponent } from './time-block-list.component';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 
 describe('TimeBlockListComponent', () => {
   let component: TimeBlockListComponent;
@@ -8,7 +9,8 @@ describe('TimeBlockListComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ TimeBlockListComponent ]
+      declarations: [ TimeBlockListComponent ],
+      imports: [DragDropModule]
     })
     .compileComponents();
   }));
