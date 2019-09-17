@@ -51,6 +51,29 @@ export class TimeBlockListComponent implements OnInit {
     }
   }
 
+  /**
+   * delete duplicate timeblock in list
+   */
+  public deleteDuplicate() : void {
+    this.timeBlocks = this.timeBlocks.filter((thing, index, self) =>
+      index === self.findIndex((t) => (
+        t.duration === thing.duration && t.label === thing.label
+      ))
+    )
+  }
+
+  public resetTimeBlockList(event: TimeBlock, index: number) {
+    if (this.timeBlocks.length < 4) {
+      let tmpTimeBlock: TimeBlock = {
+        duration: event.duration,
+        label: event.label
+      }
+      this.insertTimeBlock(tmpTimeBlock, index)
+    } else if (this.timeBlocks.length > 4) {
+      this.deleteDuplicate()
+    }
+  }
+
   drop(event: CdkDragDrop<any[]>) {
     if (event.previousContainer === event.container) {
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
@@ -60,6 +83,8 @@ export class TimeBlockListComponent implements OnInit {
         event.container.data,
         event.previousIndex,
         event.currentIndex)
+
+      this.resetTimeBlockList(event.container.data[event.currentIndex], event.previousIndex)
     }
   }
 }
