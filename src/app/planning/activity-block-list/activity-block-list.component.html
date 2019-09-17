@@ -1,1 +1,11 @@
-<p>activity-block-list works!</p>
+<div fxLayout="row" fxLayoutAlign="space-around center">
+    <div *ngFor="let activityBlock of activityBlocks" cdkDropList [cdkDropListData]="activityBlock.activities"
+        class="block-list" (cdkDropListDropped)="drop($event)">
+        <h2 class="activity-block-label">{{activityBlock.label}}</h2>
+        <div class="block-box" *ngFor="let activity of activityBlock.activities" cdkDrag>
+            {{activity.startHour}} - {{activity.endHour}}
+            <br>
+            ({{time_convert(activity.duration)}})
+        </div>
+    </div>
+</div>

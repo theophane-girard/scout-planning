@@ -5,6 +5,7 @@ import { AppComponent } from './app.component';
 import { MaterialModule } from "./material.module";
 import { CoreModule } from './core/core.module';
 import { SideBarModule } from './side-bar/side-bar.module';
+import { PlanningModule } from './planning/planning.module';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
@@ -14,7 +15,8 @@ describe('AppComponent', () => {
         BrowserAnimationsModule,
         MaterialModule,
         CoreModule,
-        SideBarModule
+        SideBarModule,
+        PlanningModule
       ],
       declarations: [
         AppComponent

@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ActivityBlockListComponent } from './activity-block-list.component';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 
 describe('ActivityBlockListComponent', () => {
   let component: ActivityBlockListComponent;
@@ -8,7 +9,8 @@ describe('ActivityBlockListComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ActivityBlockListComponent ]
+      declarations: [ ActivityBlockListComponent ],
+      imports: [DragDropModule]
     })
     .compileComponents();
   }));

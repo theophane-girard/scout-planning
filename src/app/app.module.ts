@@ -7,6 +7,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from "./material.module";
 import { CoreModule } from './core/core.module';
 import { SideBarModule } from './side-bar/side-bar.module';
+import { PlanningModule } from './planning/planning.module';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { SideBarModule } from './side-bar/side-bar.module';
     BrowserAnimationsModule,
     MaterialModule,
     CoreModule,
-    SideBarModule
+    SideBarModule,
+    PlanningModule
   ],
   providers: [],
   bootstrap: [AppComponent]
