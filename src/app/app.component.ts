@@ -17,17 +17,4 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
-  drop(event: CdkDragDrop<any[]>) {
-    if (event.previousContainer === event.container) {
-      moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
-    } else {
-      transferArrayItem(
-        event.previousContainer.data,
-        event.container.data,
-        event.previousIndex,
-        event.currentIndex)
-        this.timeBlockListService.resetTimeBlockList(event.container.data[event.currentIndex], event.previousIndex)
-    }
-  }
 }
