@@ -7,9 +7,18 @@
         {
             "type": "chrome",
             "request": "launch",
-            "name": "ANGULAR",
+            "name": "ANGULAR LAUNCH",
             "url": "http://localhost:4200",
             "webRoot": "${workspaceFolder}"
+        },
+        {
+            "type": "chrome",
+            "request": "attach",
+            "name": "ANGULAR ATTACH",
+            "url": "http://localhost:4200",
+            "webRoot": "${workspaceFolder}",
+            "port": 9222,
+            "trace": true
         }
     ]
 }

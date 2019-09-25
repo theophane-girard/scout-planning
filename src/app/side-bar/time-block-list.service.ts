@@ -76,14 +76,21 @@ export class TimeBlockListService {
 
   public resetTimeBlockList(event: TimeBlock, index: number) {
     if (this.timeBlocks.length < 4) {
-      let tmpTimeBlock: TimeBlock = {
-        duration: event.duration,
-        label: event.label
+      let tmpDuration = event.duration,
+      tmpLabel = event.label,
+      tmpTimeBlock: TimeBlock = {
+        duration: tmpDuration,
+        label: tmpLabel
       }
       this.insertTimeBlock(tmpTimeBlock, index)
     } else if (this.timeBlocks.length > 4) {
       this.deleteDuplicate()
     }
+    this.notifyChanges()
+  }
+
+  deleteTimeBlockByDuration (duration: number) {
+    this.timeBlocks = this.timeBlocks.filter(tb => tb.duration !== duration)
     this.notifyChanges()
   }
 }

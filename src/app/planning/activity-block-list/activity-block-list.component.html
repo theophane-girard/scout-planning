@@ -3,9 +3,11 @@
         class="block-list" (cdkDropListDropped)="drop($event, activityBlock)">
         <h2 class="activity-block-label">{{activityBlock.label}}</h2>
         <div class="block-box" *ngFor="let activity of activityBlock.activities" cdkDrag>
-            {{time_convert(activity.startHour)}} - {{time_convert(activity.endHour)}}
+            {{time_convert(activity.startHour)}}
             <br>
-            ({{time_convert(activity.duration)}})
+            <!-- ({{time_convert(activity.duration)}}) -->
+            <br>
+            {{time_convert(activity.endHour)}}
         </div>
     </div>
 </div>

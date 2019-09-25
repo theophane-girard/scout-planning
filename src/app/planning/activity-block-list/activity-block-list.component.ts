@@ -42,7 +42,8 @@ export class ActivityBlockListComponent implements OnInit {
         event.previousContainer.data,
         event.container.data,
         event.previousIndex,
-        event.currentIndex)        
+        event.currentIndex)
+        this.timeBlockListService.deleteTimeBlockByDuration(event.container.data[event.currentIndex].duration)
         this.timeBlockListService.resetTimeBlockList(event.container.data[event.currentIndex], event.previousIndex)
       this.updateActivityHours(activityBlock)
     }
@@ -76,11 +77,11 @@ export class ActivityBlockListComponent implements OnInit {
   updateActivityHours(activityBlock: ActivityBlock) {
     activityBlock.activities.forEach((activity, index) => {
       if (index === 0) {
-        activity.startHour = JSON.parse(JSON.stringify(activityBlock.startHour))
-        activity.endHour = JSON.parse(JSON.stringify(activityBlock.startHour + activity.duration))
+        activity.startHour = {...activityBlock}.startHour
+        activity.endHour = {...activityBlock}.startHour + {...activity}.duration
       } else {
-        activity.startHour = JSON.parse(JSON.stringify(activityBlock.activities[index-1].endHour))
-        activity.endHour = JSON.parse(JSON.stringify(activity.startHour + activity.duration))
+        activity.startHour = {...activityBlock}.activities[index-1].endHour
+        activity.endHour = {...activity}.startHour + {...activity}.duration
       }
     })
   }
