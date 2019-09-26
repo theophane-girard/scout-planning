@@ -4,7 +4,8 @@ import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/dr
 import { CoreFunctionService } from '../../core/core-function.service';
 import { TimeBlockListService } from 'src/app/side-bar/time-block-list.service';
 import { MatDialog } from '@angular/material/dialog';
-import { StartHourDialog } from 'src/app/dialogs/start-hour-dialog';
+import { StartHourDialog } from 'src/app/dialogs/start-hour/start-hour-dialog';
+import { ActivityDescriptionDialog } from 'src/app/dialogs/activity-description-dialog/activity-description-dialog';
 import { Activity } from 'src/app/models/activity';
 
 @Component({
@@ -36,7 +37,7 @@ export class ActivityBlockListComponent implements OnInit {
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
     } else {
       if (event.container.data.length === 0) {
-        this.openDialog(activityBlock)
+        this.openStartHourDialog(activityBlock)
       }
       transferArrayItem(
         event.previousContainer.data,
@@ -55,10 +56,10 @@ export class ActivityBlockListComponent implements OnInit {
   }
 
   /**
-   * 
+   * Open dialog to fill start hour
    * @param activityBlock ActivityBlock
    */
-  openDialog(activityBlock: ActivityBlock): void {
+  openStartHourDialog(activityBlock: ActivityBlock): void {
     const dialogRef = this.dialog.open(StartHourDialog, {
       width: '400px',
       data: {}
@@ -67,6 +68,21 @@ export class ActivityBlockListComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       activityBlock.startHour = result
       this.updateActivityHours(activityBlock)
+    });
+  }
+
+  /**
+   * 
+   * @param activityBlock ActivityBlock
+   */
+  openActivityDescDialog(activity: Activity): void {
+    const dialogRef = this.dialog.open(ActivityDescriptionDialog, {
+      width: '400px',
+      data: activity.description ? activity.description : {}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      activity.description = result
     });
   }
 

@@ -7,6 +7,8 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatSliderModule } from '@angular/material/slider';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
 
 @NgModule({
     imports:
@@ -18,7 +20,9 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
             FlexLayoutModule,
             MatDialogModule,
             MatSliderModule,
-            MatProgressSpinnerModule
+            MatProgressSpinnerModule,
+            MatIconModule,
+            MatInputModule
         ],
     exports:
         [
@@ -29,7 +33,9 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
             FlexLayoutModule,
             MatDialogModule,
             MatSliderModule,
-            MatProgressSpinnerModule
+            MatProgressSpinnerModule,
+            MatIconModule,
+            MatInputModule
         ],
 })
 export class MaterialModule { }

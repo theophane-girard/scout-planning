@@ -1,4 +1,4 @@
-<div fxLayout="row" fxLayoutAlign="space-around center">
+<div fxLayout="row" fxLayoutAlign="space-around start">
     <div *ngFor="let activityBlock of activityBlocks" cdkDropList [cdkDropListData]="activityBlock.activities"
         class="block-list" (cdkDropListDropped)="drop($event, activityBlock)">
         <h2 class="activity-block-label">{{activityBlock.label}}</h2>
@@ -7,8 +7,15 @@
                 {{time_convert(activity.startHour)}}
             </div>
             <br>
-            <div style="text-align: center">
-                {{ activity.description ? activity.description : '"sans description"'}}
+            <div fxLayout="row" class="text-align-center">
+                <div fxFlex="80" class="margin-auto">
+                    {{ activity.description ? activity.description : 'sans description'}}
+                </div>
+                <div fxFlex="20">
+                    <button mat-mini-fab aria-label="Modifier description" (click)="openActivityDescDialog(activity)">
+                        <mat-icon>edit</mat-icon>
+                    </button>
+                </div>
             </div>
             <!-- ({{time_convert(activity.duration)}}) -->
             <br>
