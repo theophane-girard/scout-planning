@@ -17,7 +17,11 @@
                     </button>
                 </div>
             </div>
-            <!-- ({{time_convert(activity.duration)}}) -->
+            <div fxLayout="row" class="text-align-center">
+                <p fxFlex="80">
+                    ({{time_convert(activity.duration)}})
+                </p>
+            </div>
             <br>
             <div>
                 {{time_convert(activity.endHour)}}

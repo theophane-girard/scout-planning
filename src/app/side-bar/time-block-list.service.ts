@@ -32,7 +32,6 @@ export class TimeBlockListService {
     this.timeBlocks.forEach(bloc => {
       bloc.label = CoreFunctionService.time_convert(bloc.duration)
     });
-    this.notifyChanges()
   }
 
   public setTimeBlockList(timeBlockList: TimeBlock[]) {

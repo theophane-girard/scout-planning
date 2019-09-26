@@ -7,6 +7,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { StartHourDialog } from 'src/app/dialogs/start-hour/start-hour-dialog';
 import { ActivityDescriptionDialog } from 'src/app/dialogs/activity-description-dialog/activity-description-dialog';
 import { Activity } from 'src/app/models/activity';
+import { CustomBlockService } from 'src/app/side-bar/custom-block.service';
 
 @Component({
   selector: 'activity-block-list',
@@ -14,10 +15,14 @@ import { Activity } from 'src/app/models/activity';
   styleUrls: ['./activity-block-list.component.scss']
 })
 export class ActivityBlockListComponent implements OnInit {
-  
+
   activityBlocks: ActivityBlock[] = []
 
-  constructor(private timeBlockListService: TimeBlockListService, public dialog: MatDialog) { }
+  constructor(
+    private timeBlockListService: TimeBlockListService,
+    public dialog: MatDialog,
+    private customBlockService: CustomBlockService
+  ) { }
 
   ngOnInit() {
     this.activityBlocks = [
@@ -32,7 +37,12 @@ export class ActivityBlockListComponent implements OnInit {
     ]
   }
 
-  drop(event: CdkDragDrop<any[]>, activityBlock: ActivityBlock) {
+  /**
+   * event triggered when an element is dropped in an activityBlock (ex samedi)
+   * @param event CdkDragDrop
+   * @param activityBlock ActivityBlock
+   */
+  drop(event: CdkDragDrop<any[]>, activityBlock: ActivityBlock): void {
     if (event.previousContainer === event.container) {
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
     } else {
@@ -44,13 +54,19 @@ export class ActivityBlockListComponent implements OnInit {
         event.container.data,
         event.previousIndex,
         event.currentIndex)
-        this.timeBlockListService.deleteTimeBlockByDuration(event.container.data[event.currentIndex].duration)
-        this.timeBlockListService.resetTimeBlockList(event.container.data[event.currentIndex], event.previousIndex)
+      this.customBlockService.deleteTimeBlockByDuration(event.container.data[event.currentIndex].duration)
+      this.customBlockService.resetTimeBlockList(event.container.data[event.currentIndex], event.previousIndex)
+      this.timeBlockListService.deleteTimeBlockByDuration(event.container.data[event.currentIndex].duration)
+      this.timeBlockListService.resetTimeBlockList(event.container.data[event.currentIndex], event.previousIndex)
       this.updateActivityHours(activityBlock)
     }
   }
 
-  time_convert(num) {
+  /**
+   * convert number into string hour
+   * @param num 
+   */
+  time_convert(num: number): string {
     let result = CoreFunctionService.time_convert(num)
     return result
   }
@@ -93,11 +109,11 @@ export class ActivityBlockListComponent implements OnInit {
   updateActivityHours(activityBlock: ActivityBlock) {
     activityBlock.activities.forEach((activity, index) => {
       if (index === 0) {
-        activity.startHour = {...activityBlock}.startHour
-        activity.endHour = {...activityBlock}.startHour + {...activity}.duration
+        activity.startHour = { ...activityBlock }.startHour
+        activity.endHour = { ...activityBlock }.startHour + { ...activity }.duration
       } else {
-        activity.startHour = {...activityBlock}.activities[index-1].endHour
-        activity.endHour = {...activity}.startHour + {...activity}.duration
+        activity.startHour = { ...activityBlock }.activities[index - 1].endHour
+        activity.endHour = { ...activity }.startHour + { ...activity }.duration
       }
     })
   }

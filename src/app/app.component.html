@@ -1,6 +1,7 @@
 <mat-drawer-container class="container" autosize cdkDropListGroup>
 	<mat-drawer #drawer class="sidenav" mode="side" opened>
 		<time-block-list></time-block-list>
+		<custom-block></custom-block>
 		<!-- <p>Liste des blocs</p>
 		<div cdkDropList [cdkDropListData]="timeBlocks" class="block-list" (cdkDropListDropped)="drop($event)">
 			<div class="block-box" *ngFor="let timeBlock of timeBlocks" cdkDrag>{{timeBlock.label}}</div>

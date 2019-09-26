@@ -1,0 +1,4 @@
+<p>Blocs personnalisé</p>
+<div #timeBlockList cdkDropList [cdkDropListData]="timeBlocks" class="block-list" (cdkDropListDropped)="drop($event)">
+    <div class="block-box" *ngFor="let timeBlock of timeBlocks" cdkDrag>{{timeBlock.label}}</div>
+</div>
