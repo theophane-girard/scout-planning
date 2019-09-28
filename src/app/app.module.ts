@@ -8,6 +8,7 @@ import { MaterialModule } from "./material.module";
 import { CoreModule } from './core/core.module';
 import { SideBarModule } from './side-bar/side-bar.module';
 import { PlanningModule } from './planning/planning.module';
+import { SettingsModule } from './settings/settings.module';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { PlanningModule } from './planning/planning.module';
     MaterialModule,
     CoreModule,
     SideBarModule,
-    PlanningModule
+    PlanningModule,
+    SettingsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -9,6 +9,7 @@ import { MatSliderModule } from '@angular/material/slider';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
+import { MatMenuModule } from '@angular/material/menu';
 
 @NgModule({
     imports:
@@ -22,7 +23,8 @@ import { MatInputModule } from '@angular/material/input';
             MatSliderModule,
             MatProgressSpinnerModule,
             MatIconModule,
-            MatInputModule
+            MatInputModule,
+            MatMenuModule
         ],
     exports:
         [
@@ -35,7 +37,8 @@ import { MatInputModule } from '@angular/material/input';
             MatSliderModule,
             MatProgressSpinnerModule,
             MatIconModule,
-            MatInputModule
+            MatInputModule,
+            MatMenuModule
         ],
 })
 export class MaterialModule { }

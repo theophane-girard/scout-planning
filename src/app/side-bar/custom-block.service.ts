@@ -44,4 +44,14 @@ export class CustomBlockService extends TimeBlockListService {
     }
     this.notifyChanges()
   }
+
+  /**
+   * update custom block value
+   * @param value number
+   */
+  public setCustomValue(value) {
+    this.timeBlocks[0].duration = value
+    this.timeBlocks[0].label = CoreFunctionService.time_convert(this.timeBlocks[0].duration)
+    this.notifyChanges()
+  }
 }

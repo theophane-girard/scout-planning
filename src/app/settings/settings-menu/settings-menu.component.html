@@ -1,0 +1,12 @@
+<div fxLayoutAlign="space-around center">
+    <button [matMenuTriggerFor]="downloadMenu" mat-mini-fab aria-label="Télécharger au format">
+        <mat-icon>cloud_download</mat-icon>
+    </button>
+    <button mat-mini-fab aria-label="Importer à partir">
+        <mat-icon>cloud_upload</mat-icon>
+    </button>
+</div>
+<mat-menu #downloadMenu="matMenu">
+    <button mat-menu-item>JSON</button>
+    <button mat-menu-item>PDF</button>
+</mat-menu>

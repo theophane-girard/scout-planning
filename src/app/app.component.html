@@ -2,23 +2,16 @@
 	<mat-drawer #drawer class="sidenav" mode="side" opened>
 		<time-block-list></time-block-list>
 		<custom-block></custom-block>
-		<!-- <p>Liste des blocs</p>
-		<div cdkDropList [cdkDropListData]="timeBlocks" class="block-list" (cdkDropListDropped)="drop($event)">
-			<div class="block-box" *ngFor="let timeBlock of timeBlocks" cdkDrag>{{timeBlock.label}}</div>
-		</div> -->
-
-		<!-- <p *ngIf="showFiller">Lorem, ipsum dolor sit amet consectetur.</p>
-		<button (click)="showFiller = !showFiller" mat-raised-button>
-			Toggle extra text
-		</button> -->
 	</mat-drawer>
 
 	<div class="sidenav-content">
 		<!-- <button type="button" mat-button (click)="drawer.toggle()">
 			Toggle sidenav
 		</button> -->
-		<h1 id="app-title">Planning scouts & guides</h1>
+		<div fxLayout="row" fxLayoutAlign="space-around center">
+			<h1 fxFlex="85" id="app-title">Planning scouts & guides</h1>
+			<settings-menu fxFlex="15"></settings-menu>
+		</div>
 		<activity-block-list></activity-block-list>
 	</div>
-
 </mat-drawer-container>

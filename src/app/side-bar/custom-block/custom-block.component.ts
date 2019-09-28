@@ -21,4 +21,8 @@ export class CustomBlockComponent implements OnInit {
   convertToHour(number: number) {
     return CoreFunctionService.time_convert(number)
   }
+
+  onChange(event) {
+    this.customBlockService.setCustomValue(event.value)
+  }
 }
