@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TimeBlock } from 'src/app/models/time-block';
 import { CustomBlockService } from '../custom-block.service';
+import { CoreFunctionService } from 'src/app/core/core-function.service';
 
 @Component({
   selector: 'custom-block',
@@ -13,7 +14,11 @@ export class CustomBlockComponent implements OnInit {
   constructor(private customBlockService: CustomBlockService) { }
 
   ngOnInit() {
-    this.customBlockService.$customBlocks.subscribe(customBlocks => this.timeBlocks = customBlocks)
+    this.customBlockService.$timeBlock.subscribe(customBlocks => this.timeBlocks = customBlocks)
     this.customBlockService.notifyCustomBlocksChanged()
+  }
+
+  convertToHour(number: number) {
+    return CoreFunctionService.time_convert(number)
   }
 }

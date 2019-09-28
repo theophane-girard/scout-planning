@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { TimeBlockListComponent } from './time-block-list/time-block-list.component';
 import { MaterialModule } from "../material.module";
 import { CustomBlockComponent } from './custom-block/custom-block.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -11,7 +12,8 @@ import { CustomBlockComponent } from './custom-block/custom-block.component';
   ],
   imports: [
     CommonModule,
-    MaterialModule
+    MaterialModule,
+    FormsModule
   ],
   exports: [
     TimeBlockListComponent,

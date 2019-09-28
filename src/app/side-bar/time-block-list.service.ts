@@ -7,7 +7,8 @@ import { Subject } from 'rxjs';
 })
 export class TimeBlockListService {
 
-  private timeBlocks: TimeBlock[] = []
+  protected timeBlocks: TimeBlock[] = []
+  protected maxBlocks: number
   public $timeBlock: Subject<TimeBlock[]> = new Subject<TimeBlock[]>()
 
   constructor() {
@@ -32,6 +33,8 @@ export class TimeBlockListService {
     this.timeBlocks.forEach(bloc => {
       bloc.label = CoreFunctionService.time_convert(bloc.duration)
     });
+
+    this.maxBlocks = this.timeBlocks.length
   }
 
   public setTimeBlockList(timeBlockList: TimeBlock[]) {
@@ -74,7 +77,7 @@ export class TimeBlockListService {
   }
 
   public resetTimeBlockList(event: TimeBlock, index: number) {
-    if (this.timeBlocks.length < 4) {
+    if (this.timeBlocks.length < this.maxBlocks) {
       let tmpDuration = event.duration,
       tmpLabel = event.label,
       tmpTimeBlock: TimeBlock = {
@@ -82,7 +85,7 @@ export class TimeBlockListService {
         label: tmpLabel
       }
       this.insertTimeBlock(tmpTimeBlock, index)
-    } else if (this.timeBlocks.length > 4) {
+    } else if (this.timeBlocks.length > this.maxBlocks) {
       this.deleteDuplicate()
     }
     this.notifyChanges()

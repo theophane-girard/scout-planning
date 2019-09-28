@@ -1,4 +1,8 @@
 <p>Blocs personnalisé</p>
+<mat-slider thumbLabel [displayWith]="convertToHour" [(ngModel)]="duration" [displayWith]="formatLabel"
+    tickInterval="0.25" min="0" max="24" step="0.25"></mat-slider>
 <div #timeBlockList cdkDropList [cdkDropListData]="timeBlocks" class="block-list" (cdkDropListDropped)="drop($event)">
-    <div class="block-box" *ngFor="let timeBlock of timeBlocks" cdkDrag>{{timeBlock.label}}</div>
+    <div class="block-box" *ngFor="let timeBlock of timeBlocks" cdkDrag>
+        {{timeBlock.label}}
+    </div>
 </div>

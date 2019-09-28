@@ -9,31 +9,29 @@ import { TimeBlockListService } from './time-block-list.service';
 })
 export class CustomBlockService extends TimeBlockListService {
 
-  private customBlocks: TimeBlock[] = []
-  public $customBlocks: Subject<TimeBlock[]> = new Subject<TimeBlock[]>()
-
   constructor() { 
     super()
     this.initCustomBlock()
   }
   
   initCustomBlock() {
-    this.customBlocks = [
+    this.setTimeBlockList([
       {
         duration: 1.5
       }
-    ]
-    this.customBlocks.forEach(bloc => {
+    ])
+    this.timeBlocks.forEach(bloc => {
       bloc.label = CoreFunctionService.time_convert(bloc.duration)
     });
+    this.maxBlocks = this.timeBlocks.length
   }
 
   notifyCustomBlocksChanged() {
-    this.$customBlocks.next(this.customBlocks.slice())
+    this.$timeBlock.next(this.timeBlocks.slice())
   }
 
   public resetTimeBlockList(event: TimeBlock, index: number) {
-    if (this.customBlocks.length < 1) {
+    if (this.timeBlocks.length < 1) {
       let tmpDuration = event.duration,
       tmpLabel = event.label,
       tmpTimeBlock: TimeBlock = {
@@ -41,7 +39,7 @@ export class CustomBlockService extends TimeBlockListService {
         label: tmpLabel
       }
       this.insertTimeBlock(tmpTimeBlock, index)
-    } else if (this.customBlocks.length > 1) {
+    } else if (this.timeBlocks.length > 1) {
       this.deleteDuplicate()
     }
     this.notifyChanges()
