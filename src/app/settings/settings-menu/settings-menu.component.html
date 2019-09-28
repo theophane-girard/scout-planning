@@ -2,11 +2,16 @@
     <button [matMenuTriggerFor]="downloadMenu" mat-mini-fab aria-label="Télécharger au format">
         <mat-icon>cloud_download</mat-icon>
     </button>
-    <button mat-mini-fab aria-label="Importer à partir">
+    <button [matMenuTriggerFor]="uploadMenu" mat-mini-fab aria-label="Importer à partir">
         <mat-icon>cloud_upload</mat-icon>
     </button>
 </div>
 <mat-menu #downloadMenu="matMenu">
-    <button mat-menu-item>JSON</button>
+    <button mat-menu-item (click)="downLoadFile()">JSON</button>
     <button mat-menu-item>PDF</button>
+</mat-menu>
+<mat-menu #uploadMenu="matMenu">
+    <button mat-menu-item>
+        <input type="file" (change)="onFileChange($event)" />
+    </button>
 </mat-menu>

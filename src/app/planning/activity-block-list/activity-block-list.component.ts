@@ -8,6 +8,7 @@ import { StartHourDialog } from 'src/app/dialogs/start-hour/start-hour-dialog';
 import { ActivityDescriptionDialog } from 'src/app/dialogs/activity-description-dialog/activity-description-dialog';
 import { Activity } from 'src/app/models/activity';
 import { CustomBlockService } from 'src/app/side-bar/custom-block.service';
+import { ActivityService } from '../activities.service';
 
 @Component({
   selector: 'activity-block-list',
@@ -21,20 +22,13 @@ export class ActivityBlockListComponent implements OnInit {
   constructor(
     private timeBlockListService: TimeBlockListService,
     public dialog: MatDialog,
-    private customBlockService: CustomBlockService
+    private customBlockService: CustomBlockService,
+    private activityService: ActivityService
   ) { }
 
   ngOnInit() {
-    this.activityBlocks = [
-      {
-        activities: [],
-        label: 'Samedi'
-      },
-      {
-        activities: [],
-        label: 'Dimanche'
-      }
-    ]
+    this.activityService.$activityBlocks.subscribe(actb => this.activityBlocks = actb)
+    this.activityService.notifyChanges()
   }
 
   /**
@@ -60,6 +54,8 @@ export class ActivityBlockListComponent implements OnInit {
       this.timeBlockListService.resetTimeBlockList(event.container.data[event.currentIndex], event.previousIndex)
       this.updateActivityHours(activityBlock)
     }
+    this.activityService.setActivityBlocks(this.activityBlocks)
+    this.activityService.notifyChanges()
   }
 
   /**
