@@ -52,8 +52,8 @@ export class ActivityBlockListComponent implements OnInit {
       this.customBlockService.resetTimeBlockList(event.container.data[event.currentIndex], event.previousIndex)
       this.timeBlockListService.deleteTimeBlockByDuration(event.container.data[event.currentIndex].duration)
       this.timeBlockListService.resetTimeBlockList(event.container.data[event.currentIndex], event.previousIndex)
-      this.updateActivityHours(activityBlock)
     }
+    this.updateActivityHours(activityBlock)
     this.activityService.setActivityBlocks(this.activityBlocks)
     this.activityService.notifyChanges()
   }
