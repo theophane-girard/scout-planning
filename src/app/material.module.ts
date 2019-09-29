@@ -11,6 +11,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { PDFExportModule } from '@progress/kendo-angular-pdf-export';
 
 @NgModule({
     imports:
@@ -26,7 +27,8 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
             MatIconModule,
             MatInputModule,
             MatMenuModule,
-            MatSnackBarModule
+            MatSnackBarModule,
+            PDFExportModule,
         ],
     exports:
         [
@@ -41,7 +43,8 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
             MatIconModule,
             MatInputModule,
             MatMenuModule,
-            MatSnackBarModule
+            MatSnackBarModule,
+            PDFExportModule,
         ],
 })
 export class MaterialModule { }

@@ -9,6 +9,7 @@ import { CoreModule } from './core/core.module';
 import { SideBarModule } from './side-bar/side-bar.module';
 import { PlanningModule } from './planning/planning.module';
 import { SettingsModule } from './settings/settings.module';
+import { PDFExportModule } from '@progress/kendo-angular-pdf-export';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { SettingsModule } from './settings/settings.module';
     CoreModule,
     SideBarModule,
     PlanningModule,
-    SettingsModule
+    SettingsModule,
+    PDFExportModule
   ],
   exports: [
     MaterialModule

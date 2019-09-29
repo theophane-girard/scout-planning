@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { saveAs } from 'file-saver';
 import { ActivityService } from 'src/app/planning/activities.service';
 import { ActivityBlock } from 'src/app/models/activity-block';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { LANG } from "../../core/lang";
+import { PdfComponent } from '../pdf/pdf.component';
 
 @Component({
   selector: 'settings-menu',
@@ -13,6 +14,7 @@ import { LANG } from "../../core/lang";
 export class SettingsMenuComponent implements OnInit {
 
   readonly LANG = LANG
+  @ViewChild('pdf', { static: false }) pdf: PdfComponent
 
   private activityBlocks: ActivityBlock[] = []
   constructor(
@@ -25,7 +27,7 @@ export class SettingsMenuComponent implements OnInit {
     this.actService.notifyChanges()
   }
 
-  downLoadFile() {
+  downloadAsJson() {
     var blob = new Blob([JSON.stringify(this.activityBlocks)], { type: "text/plain;charset=utf-8" });
     var url = window.URL.createObjectURL(blob);
     saveAs(blob, "planning.json");
@@ -74,6 +76,10 @@ export class SettingsMenuComponent implements OnInit {
     this.snackBar.open(msg, LANG.GENERAL.OK, {
       duration: 4000,
     });
+  }
+
+  downloadAsPdf() {
+    this.pdf.pdf.saveAs('planning.pdf')
   }
 
 }

@@ -25,8 +25,4 @@ export class CoreFunctionService {
     }
     return result
   }
-
-  static getDragOrigin(container) {
-
-  }
 }
