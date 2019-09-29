@@ -9,7 +9,7 @@
             <br>
             <div fxLayout="row" class="text-align-center">
                 <div fxFlex="80" class="margin-auto">
-                    {{ activity.description ? activity.description : 'sans description'}}
+                    {{ activity.description ? activity.description : LANG.GENERAL.WITHOUT_DESCRIPTION}}
                 </div>
                 <div fxFlex="20">
                     <button mat-mini-fab aria-label="Modifier description" (click)="openActivityDescDialog(activity)">

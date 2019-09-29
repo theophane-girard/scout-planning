@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
 import { ActivityBlock } from '../models/activity-block';
 import { Subject } from 'rxjs';
+import { LANG } from '../core/lang';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ActivityService {
-
+  readonly LANG = LANG
   private activityBlocks: ActivityBlock[]
   public $activityBlocks: Subject<ActivityBlock[]> = new Subject<ActivityBlock[]>()
 
@@ -14,11 +15,11 @@ export class ActivityService {
     this.activityBlocks = [
       {
         activities: [],
-        label: 'Samedi'
+        label: LANG.GENERAL.SATURDAY_LABEL
       },
       {
         activities: [],
-        label: 'Dimanche'
+        label: LANG.GENERAL.SUNDAY_LABEL
       }
     ]
   }

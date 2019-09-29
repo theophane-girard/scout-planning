@@ -1,10 +1,12 @@
 import { Injectable } from '@angular/core';
+import { LANG } from './lang';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CoreFunctionService {
 
+  readonly LANG = LANG
   constructor() { }
 
   /**
@@ -16,10 +18,10 @@ export class CoreFunctionService {
     let hours = Math.floor(num);
     let minutes = (num - Math.floor(num)) * 60;
     if (hours > 0) {
-      result += hours + 'h'
+      result += hours + LANG.GENERAL.HOUR_SHORT
     }
     if (minutes > 0) {
-      result += minutes + 'min'
+      result += minutes + LANG.GENERAL.MIN_SHORT
     }
     return result
   }

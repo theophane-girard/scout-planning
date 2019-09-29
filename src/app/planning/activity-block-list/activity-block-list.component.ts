@@ -9,6 +9,7 @@ import { ActivityDescriptionDialog } from 'src/app/dialogs/activity-description-
 import { Activity } from 'src/app/models/activity';
 import { CustomBlockService } from 'src/app/side-bar/custom-block.service';
 import { ActivityService } from '../activities.service';
+import { LANG } from "../../core/lang";
 
 @Component({
   selector: 'activity-block-list',
@@ -18,7 +19,8 @@ import { ActivityService } from '../activities.service';
 export class ActivityBlockListComponent implements OnInit {
 
   activityBlocks: ActivityBlock[] = []
-
+  readonly LANG= LANG
+  
   constructor(
     private timeBlockListService: TimeBlockListService,
     public dialog: MatDialog,

@@ -3,6 +3,7 @@ import { TimeBlock } from 'src/app/models/time-block';
 import { CoreFunctionService } from 'src/app/core/core-function.service';
 import { CdkDragDrop, transferArrayItem, moveItemInArray } from '@angular/cdk/drag-drop';
 import { TimeBlockListService } from '../time-block-list.service';
+import { LANG } from "../../core/lang";
 
 @Component({
   selector: 'time-block-list',
@@ -11,6 +12,7 @@ import { TimeBlockListService } from '../time-block-list.service';
 })
 export class TimeBlockListComponent implements OnInit {
   timeBlocks: TimeBlock[] = []
+  readonly LANG= LANG
 
   constructor(private timeBlockListService: TimeBlockListService) { }
 
