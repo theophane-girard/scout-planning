@@ -24,6 +24,9 @@ import { SettingsModule } from './settings/settings.module';
     PlanningModule,
     SettingsModule
   ],
+  exports: [
+    MaterialModule
+  ],
   providers: [],
   bootstrap: [AppComponent]
 })

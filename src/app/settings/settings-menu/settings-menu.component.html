@@ -1,9 +1,9 @@
 <div fxLayoutAlign="space-around center">
     <button [matMenuTriggerFor]="downloadMenu" mat-mini-fab aria-label="Télécharger au format">
-        <mat-icon>cloud_download</mat-icon>
+        <mat-icon>cloud_upload</mat-icon>
     </button>
     <button [matMenuTriggerFor]="uploadMenu" mat-mini-fab aria-label="Importer à partir">
-        <mat-icon>cloud_upload</mat-icon>
+        <mat-icon>cloud_download</mat-icon>
     </button>
 </div>
 <mat-menu #downloadMenu="matMenu">
@@ -11,7 +11,8 @@
     <button mat-menu-item>PDF</button>
 </mat-menu>
 <mat-menu #uploadMenu="matMenu">
-    <button mat-menu-item>
-        <input type="file" (change)="onFileChange($event)" />
+    <button (click)="fileInput.click()" mat-menu-item>
+        {{ LANG.GENERAL.IMPORT_JSON_FILE }}
+        <input hidden (change)="onFileChange($event)" #fileInput type="file" id="file">
     </button>
 </mat-menu>
