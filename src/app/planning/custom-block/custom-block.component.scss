@@ -1,7 +1,18 @@
 mat-slider {
-    width: 100%;
-  }
-  
-  .mat-slider-thumb {
-      background-color: aliceblue;
-  }
+  width: 100%;
+}
+
+.mat-slider-thumb {
+  background-color: aliceblue;
+}
+
+.block-box {
+  padding: 20px 10px;
+  border-bottom: solid 1px #ccc;
+  color: rgba(0, 0, 0, 0.87);
+  display: block;
+  box-sizing: border-box;
+  cursor: move;
+  background: white;
+  font-size: 14px;
+}

@@ -5,6 +5,7 @@ export const LANG = {
         TITLE_LABEL: 'Planning Scouts & Guides',
         TIME_BLOCKS_LIST_LABEL: 'Liste des blocs de temps',
         CUSTOM_BLOCKS_LIST_LABEL: 'Bloc personnalisé',
+        PDF_PREVIEW_TITLE: 'Prévisualisation PDF',
         SATURDAY_LABEL: 'Samedi',
         SUNDAY_LABEL: 'Dimanche',
         HOUR_SHORT: 'h',

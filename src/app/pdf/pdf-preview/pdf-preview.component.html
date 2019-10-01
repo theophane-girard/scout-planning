@@ -1,3 +1,17 @@
-<kendo-pdf-export hidden #pdf paperSize="A4" margin="2cm">
-   <h1>{{LANG.GENERAL.TITLE_LABEL}}</h1>
-</kendo-pdf-export>
+<h1 class="text-align-center">{{LANG.GENERAL.PDF_PREVIEW_TITLE}}</h1>
+<mat-card class="margin-5">
+   <kendo-pdf-export #pdf paperSize="A4" margin="1cm">
+      <h1 class="text-align-center">{{LANG.GENERAL.TITLE_LABEL}}</h1>
+      <activity-block-list [isPreview]="true"></activity-block-list>
+   </kendo-pdf-export>
+</mat-card>
+<div fxLayout="row" fxLayoutAlign="space-around start">
+   <button mat-raised-button color="warn" (click)="download()">
+      <mat-icon>picture_as_pdf</mat-icon>
+      Télécharger
+   </button>
+   <button mat-raised-button color="warn" routerLink="/planning">
+      <mat-icon>close</mat-icon>
+      Retour
+   </button>
+</div>

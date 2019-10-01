@@ -4,7 +4,6 @@ import { ActivityService } from 'src/app/planning/activities.service';
 import { ActivityBlock } from 'src/app/models/activity-block';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { LANG } from "../../core/lang";
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'settings-menu',
@@ -18,8 +17,7 @@ export class SettingsMenuComponent implements OnInit {
   private activityBlocks: ActivityBlock[] = []
   constructor(
     private actService: ActivityService,
-    private snackBar: MatSnackBar,
-    private router: Router
+    private snackBar: MatSnackBar
   ) { }
 
   ngOnInit() {
@@ -80,10 +78,4 @@ export class SettingsMenuComponent implements OnInit {
       duration: 4000,
     });
   }
-
-  previewAsPdf() {
-    // this.router.navigateByUrl('/pdf');
-  //   this.pdf.pdf.saveAs('planning.pdf')
-  }
-
 }

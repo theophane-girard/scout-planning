@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 import { PdfPreviewComponent } from './pdf-preview/pdf-preview.component';
 import { PDFExportModule } from '@progress/kendo-angular-pdf-export';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MaterialModule } from '../material.module';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -11,7 +13,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
   imports: [
     CommonModule,
     PDFExportModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MaterialModule,
+    RouterModule
   ],
   exports: [
     PdfPreviewComponent

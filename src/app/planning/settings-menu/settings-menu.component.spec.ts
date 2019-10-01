@@ -3,6 +3,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { SettingsMenuComponent } from './settings-menu.component';
 import { CommonModule } from '@angular/common';
 import { MaterialModule } from 'src/app/material.module';
+import { RouterTestingModule } from '@angular/router/testing';
 
 describe('SettingsMenuComponent', () => {
   let component: SettingsMenuComponent;
@@ -13,7 +14,8 @@ describe('SettingsMenuComponent', () => {
       declarations: [SettingsMenuComponent],
       imports: [
         CommonModule,
-        MaterialModule
+        MaterialModule,
+        RouterTestingModule
       ],
     })
     .compileComponents();

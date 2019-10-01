@@ -9,6 +9,7 @@ import { TimeBlockListComponent } from './time-block-list/time-block-list.compon
 import { SettingsMenuComponent } from './settings-menu/settings-menu.component';
 import { PlanningComponent } from './planning/planning.component';
 import { CustomBlockComponent } from './custom-block/custom-block.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { CustomBlockComponent } from './custom-block/custom-block.component';
   imports: [
     CommonModule,
     MaterialModule,
-    FormsModule
+    FormsModule,
+    RouterModule
   ],
   entryComponents: [
     StartHourDialog,

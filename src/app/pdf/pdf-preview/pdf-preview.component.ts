@@ -20,4 +20,7 @@ export class PdfPreviewComponent implements OnInit {
     this.actBService.notifyChanges()
   }
 
+  download() {
+    this.pdf.saveAs('planning.pdf')
+  }
 }

@@ -11,6 +11,7 @@ import { CommonModule } from '@angular/common';
 import { MaterialModule } from 'src/app/material.module';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { RouterTestingModule } from '@angular/router/testing';
 
 describe('PlanningComponent', () => {
   let component: PlanningComponent;
@@ -31,7 +32,8 @@ describe('PlanningComponent', () => {
         CommonModule,
         MaterialModule,
         FormsModule,
-        BrowserAnimationsModule
+        BrowserAnimationsModule,
+        RouterTestingModule
       ]
     })
     .compileComponents();

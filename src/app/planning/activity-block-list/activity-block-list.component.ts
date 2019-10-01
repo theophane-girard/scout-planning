@@ -1,4 +1,4 @@
-import { Component, OnInit, Output } from '@angular/core';
+import { Component, OnInit, Output, Input } from '@angular/core';
 import { ActivityBlock } from 'src/app/models/activity-block';
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 import { CoreFunctionService } from '../../core/core-function.service';
@@ -20,7 +20,8 @@ export class ActivityBlockListComponent implements OnInit {
 
   activityBlocks: ActivityBlock[] = []
   readonly LANG= LANG
-  
+  @Input() isPreview: boolean = false
+
   constructor(
     private timeBlockListService: TimeBlockListService,
     public dialog: MatDialog,
