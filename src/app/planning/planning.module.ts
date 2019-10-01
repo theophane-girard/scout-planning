@@ -5,12 +5,20 @@ import { MaterialModule } from '../material.module';
 import { StartHourDialog } from '../dialogs/start-hour/start-hour-dialog';
 import { FormsModule } from '@angular/forms';
 import { ActivityDescriptionDialog } from '../dialogs/activity-description-dialog/activity-description-dialog';
+import { TimeBlockListComponent } from './time-block-list/time-block-list.component';
+import { SettingsMenuComponent } from './settings-menu/settings-menu.component';
+import { PlanningComponent } from './planning/planning.component';
+import { CustomBlockComponent } from './custom-block/custom-block.component';
 
 @NgModule({
   declarations: [
     ActivityBlockListComponent, 
     StartHourDialog, 
-    ActivityDescriptionDialog
+    ActivityDescriptionDialog,
+    TimeBlockListComponent,
+    SettingsMenuComponent,
+    PlanningComponent,
+    CustomBlockComponent
   ],
   imports: [
     CommonModule,
@@ -21,6 +29,9 @@ import { ActivityDescriptionDialog } from '../dialogs/activity-description-dialo
     StartHourDialog,
     ActivityDescriptionDialog
   ],
-  exports: [ActivityBlockListComponent]
+  exports: [
+    ActivityBlockListComponent,
+    PlanningComponent
+  ]
 })
 export class PlanningModule { }

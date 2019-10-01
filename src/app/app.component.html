@@ -1,17 +1,1 @@
-<mat-drawer-container class="container" autosize cdkDropListGroup>
-	<mat-drawer #drawer class="sidenav" mode="side" opened>
-		<time-block-list></time-block-list>
-		<custom-block></custom-block>
-	</mat-drawer>
-
-	<div class="sidenav-content">
-		<!-- <button type="button" mat-button (click)="drawer.toggle()">
-			Toggle sidenav
-		</button> -->
-		<div fxLayout="row" fxLayoutAlign="space-around center">
-			<h1 fxFlex="85" id="app-title">{{ LANG.GENERAL.TITLE_LABEL }}</h1>
-			<settings-menu fxFlex="15"></settings-menu>
-		</div>
-		<activity-block-list></activity-block-list>
-	</div>
-</mat-drawer-container>
+<router-outlet></router-outlet>

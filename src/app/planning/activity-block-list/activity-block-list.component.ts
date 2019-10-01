@@ -2,12 +2,12 @@ import { Component, OnInit, Output } from '@angular/core';
 import { ActivityBlock } from 'src/app/models/activity-block';
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 import { CoreFunctionService } from '../../core/core-function.service';
-import { TimeBlockListService } from 'src/app/side-bar/time-block-list.service';
+import { TimeBlockListService } from 'src/app/planning/time-block-list.service';
 import { MatDialog } from '@angular/material/dialog';
 import { StartHourDialog } from 'src/app/dialogs/start-hour/start-hour-dialog';
 import { ActivityDescriptionDialog } from 'src/app/dialogs/activity-description-dialog/activity-description-dialog';
 import { Activity } from 'src/app/models/activity';
-import { CustomBlockService } from 'src/app/side-bar/custom-block.service';
+import { CustomBlockService } from 'src/app/planning/custom-block.service';
 import { ActivityService } from '../activities.service';
 import { LANG } from "../../core/lang";
 

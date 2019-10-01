@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild, AfterViewInit, QueryList } from '@angular/core';
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
-import { TimeBlockListService } from './side-bar/time-block-list.service';
+import { TimeBlockListService } from './planning/time-block-list.service';
 import { LANG } from "./core/lang";
 
 @Component({

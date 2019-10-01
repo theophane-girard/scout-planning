@@ -14,5 +14,6 @@ export const LANG = {
     ERRORS:{
         INVALID_CONTENT_FILE: 'Le contenu du fichier importé n\'est pas valide',
         EMPTY_CONTENT_FILE: 'Le fichier importé est vide',
+        EMPTY_PLANNING: 'Le planning est vide'
     }
 }

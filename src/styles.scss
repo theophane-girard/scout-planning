@@ -21,8 +21,23 @@ body {
   width: 100%;
 }
 
-.mat-slider-thumb {
+.container {
+  height: 100%;
+}
 
+.sidenav-content {
+  // display: flex;
+  // height: 100%;
+}
+
+.sidenav {
+  padding: 20px;
+  background-color: rgb(63, 149, 189);
+}
+
+#app-title {
+  vertical-align: top;
+  text-align: center;
 }
 
 .block-list {

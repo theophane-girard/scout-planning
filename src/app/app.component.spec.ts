@@ -4,9 +4,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppComponent } from './app.component';
 import { MaterialModule } from "./material.module";
 import { CoreModule } from './core/core.module';
-import { SideBarModule } from './side-bar/side-bar.module';
 import { PlanningModule } from './planning/planning.module';
-import { SettingsModule } from './settings/settings.module';
+import { PDFExportModule } from '@progress/kendo-angular-pdf-export';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
@@ -16,9 +15,8 @@ describe('AppComponent', () => {
         BrowserAnimationsModule,
         MaterialModule,
         CoreModule,
-        SideBarModule,
         PlanningModule,
-        SettingsModule
+        PDFExportModule
       ],
       declarations: [
         AppComponent

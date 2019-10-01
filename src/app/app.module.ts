@@ -6,14 +6,13 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from "./material.module";
 import { CoreModule } from './core/core.module';
-import { SideBarModule } from './side-bar/side-bar.module';
 import { PlanningModule } from './planning/planning.module';
-import { SettingsModule } from './settings/settings.module';
-import { PDFExportModule } from '@progress/kendo-angular-pdf-export';
+import { PdfPreviewComponent } from './pdf/pdf-preview/pdf-preview.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    PdfPreviewComponent
   ],
   imports: [
     BrowserModule,
@@ -21,10 +20,7 @@ import { PDFExportModule } from '@progress/kendo-angular-pdf-export';
     BrowserAnimationsModule,
     MaterialModule,
     CoreModule,
-    SideBarModule,
     PlanningModule,
-    SettingsModule,
-    PDFExportModule
   ],
   exports: [
     MaterialModule

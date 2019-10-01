@@ -4,7 +4,7 @@ import { ActivityService } from 'src/app/planning/activities.service';
 import { ActivityBlock } from 'src/app/models/activity-block';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { LANG } from "../../core/lang";
-import { PdfComponent } from '../pdf/pdf.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'settings-menu',
@@ -14,12 +14,12 @@ import { PdfComponent } from '../pdf/pdf.component';
 export class SettingsMenuComponent implements OnInit {
 
   readonly LANG = LANG
-  @ViewChild('pdf', { static: false }) pdf: PdfComponent
 
   private activityBlocks: ActivityBlock[] = []
   constructor(
     private actService: ActivityService,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -28,11 +28,14 @@ export class SettingsMenuComponent implements OnInit {
   }
 
   downloadAsJson() {
-    var blob = new Blob([JSON.stringify(this.activityBlocks)], { type: "text/plain;charset=utf-8" });
-    var url = window.URL.createObjectURL(blob);
-    saveAs(blob, "planning.json");
-    window.open(url);
-
+    if (this.activityBlocks.length > 0) {
+      var blob = new Blob([JSON.stringify(this.activityBlocks)], { type: "text/plain;charset=utf-8" });
+      var url = window.URL.createObjectURL(blob);
+      saveAs(blob, "planning.json");
+      window.open(url);
+    } else {
+      this.showMessage(LANG.ERRORS.EMPTY_PLANNING)
+    }
   }
 
   onFileChange(event: any) {
@@ -78,8 +81,9 @@ export class SettingsMenuComponent implements OnInit {
     });
   }
 
-  downloadAsPdf() {
-    this.pdf.pdf.saveAs('planning.pdf')
+  previewAsPdf() {
+    // this.router.navigateByUrl('/pdf');
+  //   this.pdf.pdf.saveAs('planning.pdf')
   }
 
 }
