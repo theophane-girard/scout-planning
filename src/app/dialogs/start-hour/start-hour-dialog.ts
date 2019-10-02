@@ -12,7 +12,7 @@ export interface startHourData {
     styleUrls: ['./start-hour-dialog.scss']
 })
 export class StartHourDialog {
-
+    hour: number = 14.5
     constructor(
         public dialogRef: MatDialogRef<StartHourDialog>,
         @Inject(MAT_DIALOG_DATA) public data: startHourData) { }

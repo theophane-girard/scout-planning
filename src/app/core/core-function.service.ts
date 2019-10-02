@@ -23,6 +23,9 @@ export class CoreFunctionService {
     if (minutes > 0) {
       result += minutes + LANG.GENERAL.MIN_SHORT
     }
+    if (result === "") {
+      result = 0 + LANG.GENERAL.HOUR_SHORT
+    }
     return result
   }
 }

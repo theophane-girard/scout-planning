@@ -25,4 +25,9 @@ describe('CoreFunctionService', () => {
     let hour: string = CoreFunctionService.time_convert(num)
     expect(hour === '3h');
   });
+  it('should be "3h"', () => {
+    const num: number = 0
+    let hour: string = CoreFunctionService.time_convert(num)
+    expect(hour === '0h');
+  });
 });
