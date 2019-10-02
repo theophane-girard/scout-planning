@@ -1,3 +1,17 @@
 .activity-block-label {
   padding-left: 10px;
 }
+
+.block-box {
+  padding: 5px 10px;
+  border-bottom: solid 1px #ccc;
+  color: rgba(0, 0, 0, 0.87);
+  display: block;
+  box-sizing: border-box;
+  cursor: move;
+  background: white;
+  font-size: 14px;
+}
+.block-list {
+  width: 300px;
+}

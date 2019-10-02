@@ -10,6 +10,7 @@ import { Activity } from 'src/app/models/activity';
 import { CustomBlockService } from 'src/app/planning/custom-block.service';
 import { ActivityService } from '../activities.service';
 import { LANG } from "../../core/lang";
+import { DisplaySettingsService } from '../display-settings.service';
 
 @Component({
   selector: 'activity-block-list',
@@ -21,17 +22,23 @@ export class ActivityBlockListComponent implements OnInit {
   activityBlocks: ActivityBlock[] = []
   readonly LANG= LANG
   @Input() isPreview: boolean = false
+  showMaterial: boolean
+  showActDuration: boolean
 
   constructor(
     private timeBlockListService: TimeBlockListService,
     public dialog: MatDialog,
     private customBlockService: CustomBlockService,
-    private activityService: ActivityService
+    private activityService: ActivityService,
+    private displaySettingService: DisplaySettingsService
   ) { }
 
   ngOnInit() {
     this.activityService.$activityBlocks.subscribe(actb => this.activityBlocks = actb)
     this.activityService.notifyChanges()
+    this.displaySettingService.$showActDuration.subscribe(value => this.showActDuration = value)
+    this.displaySettingService.$showMaterial.subscribe(value => this.showMaterial = value)
+    this.displaySettingService.notifyChanges()
   }
 
   /**

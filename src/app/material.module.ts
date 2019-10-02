@@ -13,6 +13,8 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { PDFExportModule } from '@progress/kendo-angular-pdf-export';
 import { MatCardModule } from '@angular/material/card';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 
 @NgModule({
     imports:
@@ -31,6 +33,8 @@ import { MatCardModule } from '@angular/material/card';
             MatSnackBarModule,
             PDFExportModule,
             MatCardModule,
+            MatExpansionModule,
+            MatSlideToggleModule,
         ],
     exports:
         [
@@ -48,6 +52,8 @@ import { MatCardModule } from '@angular/material/card';
             MatSnackBarModule,
             PDFExportModule,
             MatCardModule,
+            MatExpansionModule,
+            MatSlideToggleModule,
         ],
 })
 export class MaterialModule { }

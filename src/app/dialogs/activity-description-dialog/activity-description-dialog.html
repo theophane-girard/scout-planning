@@ -3,6 +3,14 @@
     <mat-form-field class="width-100">
         <textarea matInput placeholder="Description" [(ngModel)]="description"></textarea>
     </mat-form-field>
+    <!-- <div formArrayName="materials">
+        <h3>Materiel</h3>
+        <mat-form-field *ngFor="let materialControl of getMaterials().controls; let i = index">
+            <input matInput placeholder="Input" [formControlName]="i">
+        </mat-form-field>
+        <button type="button" class="btn btn-success" (click)="onAddHobby()">Ajouter un hobby</button>
+    </div>
+    <button type="submit" class="btn btn-primary" [disabled]="userForm.invalid">Soumettre</button> -->
 </div>
 <div mat-dialog-actions>
     <button mat-button (click)="onNoClick()">Annuler</button>

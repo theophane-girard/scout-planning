@@ -1,7 +1,34 @@
 <mat-drawer-container class="container" autosize cdkDropListGroup>
 	<mat-drawer #drawer class="sidenav" mode="side" opened>
-		<time-block-list></time-block-list>
-		<custom-block></custom-block>
+
+		<mat-accordion>
+			<mat-expansion-panel [expanded]="true">
+				<mat-expansion-panel-header>
+					<mat-panel-title>
+						Plages horaires
+					</mat-panel-title>
+					<mat-panel-description>
+						Choisissez les plages horaires
+					</mat-panel-description>
+				</mat-expansion-panel-header>
+				<time-block-list></time-block-list>
+				<custom-block></custom-block>
+			</mat-expansion-panel>
+			<mat-expansion-panel>
+				<mat-expansion-panel-header>
+					<mat-panel-title>
+						Paramètres d'affichage
+					</mat-panel-title>
+					<mat-panel-description>
+						Choisissez les éléments à afficher
+					</mat-panel-description>
+				</mat-expansion-panel-header>
+				<div fxLayout="row" fxLayoutAlign="space-around center">
+					<mat-slide-toggle [(ngModel)]="showMaterial" (change)="updateShowMaterial()">Materiel</mat-slide-toggle>
+					<mat-slide-toggle [(ngModel)]="showActDuration" (change)="updateShowActDuration()">Durée des activités</mat-slide-toggle>
+				</div>
+			</mat-expansion-panel>
+		</mat-accordion>
 	</mat-drawer>
 
 	<div class="sidenav-content">
