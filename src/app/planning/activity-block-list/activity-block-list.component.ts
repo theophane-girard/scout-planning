@@ -103,8 +103,11 @@ export class ActivityBlockListComponent implements OnInit {
       data: activity.description ? activity.description : {}
     });
 
-    dialogRef.afterClosed().subscribe(result => {
-      activity.description = result
+    dialogRef.afterClosed().subscribe(act => {
+      activity.description = act.description
+      if (act.materials) {
+        activity.materials = act.materials
+      }
     });
   }
 

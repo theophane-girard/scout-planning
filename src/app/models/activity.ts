@@ -4,4 +4,5 @@ export class Activity extends TimeBlock {
     startHour?: number
     endHour?: number
     description?: string
+    materials?: string[]
 }

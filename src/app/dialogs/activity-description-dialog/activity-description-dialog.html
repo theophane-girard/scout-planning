@@ -1,18 +1,19 @@
 <h1 mat-dialog-title>Saisissez la description de l'activité</h1>
-<div mat-dialog-content>
+<div mat-dialog-content [formGroup]="form">
     <mat-form-field class="width-100">
-        <textarea matInput placeholder="Description" [(ngModel)]="description"></textarea>
+        <textarea formControlName="description" matInput placeholder="Description"></textarea>
     </mat-form-field>
-    <!-- <div formArrayName="materials">
-        <h3>Materiel</h3>
-        <mat-form-field *ngFor="let materialControl of getMaterials().controls; let i = index">
-            <input matInput placeholder="Input" [formControlName]="i">
-        </mat-form-field>
-        <button type="button" class="btn btn-success" (click)="onAddHobby()">Ajouter un hobby</button>
+    <div formArrayName="materials">
+        <h1 mat-dialog-title>Saisissez le materiel de l'activité</h1>
+        <div fxLayout="column" fxLayoutAlign="space-around start">
+            <mat-form-field *ngFor="let materialControl of getMaterials().controls; let i = index">
+                <input matInput placeholder="{{'Élément ' + (i+1)}}" [formControlName]="i">
+            </mat-form-field>
+            <button mat-raised-button color="warn" (click)="onAddMaterial()"><mat-icon>add</mat-icon></button>
+        </div>
     </div>
-    <button type="submit" class="btn btn-primary" [disabled]="userForm.invalid">Soumettre</button> -->
 </div>
 <div mat-dialog-actions>
     <button mat-button (click)="onNoClick()">Annuler</button>
-    <button mat-button [mat-dialog-close]="description" cdkFocusInitial>Ok</button>
+    <button mat-button [disabled]="form.invalid" (click)="save()" cdkFocusInitial>Ok</button>
 </div>
