@@ -9,7 +9,7 @@ import { SettingsMenuComponent } from '../settings-menu/settings-menu.component'
 import { CustomBlockComponent } from '../custom-block/custom-block.component';
 import { CommonModule } from '@angular/common';
 import { MaterialModule } from 'src/app/material.module';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterTestingModule } from '@angular/router/testing';
 
@@ -33,7 +33,8 @@ describe('PlanningComponent', () => {
         MaterialModule,
         FormsModule,
         BrowserAnimationsModule,
-        RouterTestingModule
+        RouterTestingModule,
+        ReactiveFormsModule
       ]
     })
     .compileComponents();

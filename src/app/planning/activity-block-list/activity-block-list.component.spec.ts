@@ -5,7 +5,7 @@ import { StartHourDialog } from 'src/app/dialogs/start-hour/start-hour-dialog';
 import { ActivityDescriptionDialog } from 'src/app/dialogs/activity-description-dialog/activity-description-dialog';
 import { CommonModule } from '@angular/common';
 import { MaterialModule } from 'src/app/material.module';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 describe('ActivityBlockListComponent', () => {
   let component: ActivityBlockListComponent;
@@ -21,7 +21,8 @@ describe('ActivityBlockListComponent', () => {
       imports: [
         CommonModule,
         MaterialModule,
-        FormsModule
+        FormsModule,
+        ReactiveFormsModule
       ],
     })
     .compileComponents();

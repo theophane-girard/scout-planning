@@ -23,7 +23,7 @@ export class ActivityDescriptionDialog implements OnInit {
     ngOnInit(): void {
         this.form = this.fb.group({
             description: [this.description, []],
-            materials: this.fb.array([])
+            materials: this.fb.array([this.createItem()])
         });
     }
 
@@ -39,8 +39,15 @@ export class ActivityDescriptionDialog implements OnInit {
         return this.form.get('materials') as FormArray;
     }
 
+    createItem() {
+        return this.fb.group({
+            description: '',
+            amount: 1
+        });
+    }
+
     onAddMaterial() {
-        const newMaterialControl = this.fb.control(null, Validators.required);
-        this.getMaterials().push(newMaterialControl);
+        // const newMaterialControl = this.fb.control(null, Validators.required);
+        this.getMaterials().push(this.createItem());
     }
 }

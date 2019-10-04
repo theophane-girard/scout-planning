@@ -6,10 +6,17 @@
     <div formArrayName="materials">
         <h1 mat-dialog-title>Saisissez le materiel de l'activité</h1>
         <div fxLayout="column" fxLayoutAlign="space-around start">
-            <mat-form-field *ngFor="let materialControl of getMaterials().controls; let i = index">
-                <input matInput placeholder="{{'Élément ' + (i+1)}}" [formControlName]="i">
-            </mat-form-field>
-            <button mat-raised-button color="warn" (click)="onAddMaterial()"><mat-icon>add</mat-icon></button>
+            <div *ngFor="let materialControl of getMaterials().controls; let i = index">
+                <!-- <mat-form-field>
+                    <input matInput type="number" placeholder="Quantité" formControlName="amount">
+                </mat-form-field>
+                <mat-form-field>
+                    <input matInput placeholder="{{'Élément ' + (i+1)}}" formControlName="description">
+                </mat-form-field> -->
+            </div>
+            <button mat-raised-button color="warn" (click)="onAddMaterial()">
+                <mat-icon>add</mat-icon>
+            </button>
         </div>
     </div>
 </div>

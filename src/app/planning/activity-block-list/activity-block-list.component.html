@@ -21,13 +21,11 @@
                     ({{time_convert(activity.duration)}})
                 </p>
             </div>
-            <div style="margin-left: 20px;">
-                <div *ngIf="showMaterial && activity.materials" fxLayout="column" fxLayoutAlign="start start">
-                    <h4>Materiel</h4>
-                    <p fxFlex="80" fxLayout="column">
-                        <mat-checkbox *ngFor="let material of activity.materials">{{material}}</mat-checkbox>
-                    </p>
-                </div>
+            <div class="margin-left-20px" *ngIf="showMaterial && activity.materials" fxLayout="column" fxLayoutAlign="start start">
+                <h4>Materiel</h4>
+                <p fxFlex="80" fxLayout="column">
+                    <mat-checkbox *ngFor="let material of activity.materials">{{material}}</mat-checkbox>
+                </p>
             </div>
             <div>
                 {{time_convert(activity.endHour)}}
