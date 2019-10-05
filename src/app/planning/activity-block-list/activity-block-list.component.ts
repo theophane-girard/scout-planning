@@ -99,8 +99,8 @@ export class ActivityBlockListComponent implements OnInit {
    */
   openActivityDescDialog(activity: Activity): void {
     const dialogRef = this.dialog.open(ActivityDescriptionDialog, {
-      width: '400px',
-      data: activity.description ? activity.description : {}
+      width: '500px',
+      data: activity
     });
 
     dialogRef.afterClosed().subscribe(act => {

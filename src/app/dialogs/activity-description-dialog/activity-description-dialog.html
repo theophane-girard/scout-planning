@@ -11,9 +11,14 @@
                 <mat-form-field fxFlex="25">
                     <input matInput type="number" placeholder="Quantité" formControlName="amount">
                 </mat-form-field>
-                <mat-form-field fxFlex="60">
-                    <input matInput placeholder="{{'Élément ' + (i+1)}}" formControlName="description">
+                <mat-form-field fxFlex="40">
+                    <input matInput placeholder="{{'Élément ' + (i+1)}}" formControlName="label">
                 </mat-form-field>
+                <div fxFlex="10">
+                    <button mat-raised-button color="warn" (click)="deleteMaterial(i)">
+                        <mat-icon>close</mat-icon>
+                    </button>
+                </div>
             </div>
             <button mat-raised-button color="warn" (click)="onAddMaterial()">
                 <mat-icon>add</mat-icon>

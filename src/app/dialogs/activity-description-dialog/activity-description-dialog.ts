@@ -1,9 +1,11 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { FormGroup, FormBuilder, FormArray, Validators } from '@angular/forms';
+import { Material } from 'src/app/models/material';
 
 export interface activityDescriptionData {
     description: string;
+    materials: Material[]
 }
 
 @Component({
@@ -13,7 +15,6 @@ export interface activityDescriptionData {
 })
 export class ActivityDescriptionDialog implements OnInit {
     form: FormGroup
-    description: string
     constructor(
         private fb: FormBuilder,
         public dialogRef: MatDialogRef<ActivityDescriptionDialog>,
@@ -21,15 +22,23 @@ export class ActivityDescriptionDialog implements OnInit {
     ) { }
 
     ngOnInit(): void {
+        let materials: any[] = this.initMaterials()
         this.form = this.fb.group({
-            description: [this.description, []],
-            materials: this.fb.array([
-                this.fb.group({
-                    description: '',
-                    amount: 1
-                })
-            ])
+            description: [this.data.description, []],
+            materials: this.fb.array(materials)
         });
+    }
+
+    initMaterials(): any[] {
+        let materials: any = []
+        if (this.data.materials) {
+            this.data.materials.forEach(mat => {
+                materials.push(this.fb.group(mat))
+            });
+        } else {
+            materials = [this.createItem()]
+        }
+        return materials
     }
 
     save(): void {
@@ -46,13 +55,16 @@ export class ActivityDescriptionDialog implements OnInit {
 
     createItem() {
         return this.fb.group({
-            description: '',
+            label: '',
             amount: 1
         });
     }
 
     onAddMaterial() {
-        // const newMaterialControl = this.fb.control(null, Validators.required);
         this.getMaterials().push(this.createItem());
+    }
+
+    deleteMaterial(index: number) {
+        this.getMaterials().removeAt(index)
     }
 }

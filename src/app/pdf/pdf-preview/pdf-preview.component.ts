@@ -42,11 +42,11 @@ export class PdfPreviewComponent implements OnInit {
       })
     })
 
-    tmpMaterials.forEach(mat => {
-      if (this.materials.every(mat => mat.label !== mat.label)) {
+    tmpMaterials.forEach(oMat => {
+      if (this.materials.every(mat => mat.label !== oMat.label)) {
         tmpLabel = ''
         tmpAmount = 0
-        tmpMaterials.filter(tmpMat => mat.label === tmpMat.label).forEach(mat => {
+        tmpMaterials.filter(pMat => oMat.label === pMat.label).forEach(mat => {
           tmpLabel = mat.label
           tmpAmount += mat.amount
         });
