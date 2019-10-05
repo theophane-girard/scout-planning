@@ -23,7 +23,12 @@ export class ActivityDescriptionDialog implements OnInit {
     ngOnInit(): void {
         this.form = this.fb.group({
             description: [this.description, []],
-            materials: this.fb.array([this.createItem()])
+            materials: this.fb.array([
+                this.fb.group({
+                    description: '',
+                    amount: 1
+                })
+            ])
         });
     }
 

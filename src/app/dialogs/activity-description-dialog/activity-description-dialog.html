@@ -3,16 +3,17 @@
     <mat-form-field class="width-100">
         <textarea formControlName="description" matInput placeholder="Description"></textarea>
     </mat-form-field>
-    <div formArrayName="materials">
+    <div>
         <h1 mat-dialog-title>Saisissez le materiel de l'activité</h1>
-        <div fxLayout="column" fxLayoutAlign="space-around start">
-            <div *ngFor="let materialControl of getMaterials().controls; let i = index">
-                <!-- <mat-form-field>
+        <div fxLayout="column" fxLayoutAlign="space-around start" formArrayName="materials">
+            <div *ngFor="let materialControl of getMaterials().controls; let i = index" formGroupName="{{i}}"
+                fxLayout="row" fxLayoutAlign="space-around start">
+                <mat-form-field fxFlex="25">
                     <input matInput type="number" placeholder="Quantité" formControlName="amount">
                 </mat-form-field>
-                <mat-form-field>
+                <mat-form-field fxFlex="60">
                     <input matInput placeholder="{{'Élément ' + (i+1)}}" formControlName="description">
-                </mat-form-field> -->
+                </mat-form-field>
             </div>
             <button mat-raised-button color="warn" (click)="onAddMaterial()">
                 <mat-icon>add</mat-icon>
