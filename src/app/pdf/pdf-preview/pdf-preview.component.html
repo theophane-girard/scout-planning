@@ -3,6 +3,12 @@
    <kendo-pdf-export #pdf paperSize="A4" margin="1cm">
       <h1 class="text-align-center">{{LANG.GENERAL.TITLE_LABEL}}</h1>
       <activity-block-list [isPreview]="true"></activity-block-list>
+      <div class="margin-left-20px" fxLayout="column" fxLayoutAlign="start start">
+         <h4>Materiel</h4>
+         <p fxFlex="80" fxLayout="column">
+            <mat-checkbox *ngFor="let material of materials">{{material.amount}} {{material.description}}</mat-checkbox>
+         </p>
+      </div>
    </kendo-pdf-export>
 </mat-card>
 <div fxLayout="row" fxLayoutAlign="space-around start">
