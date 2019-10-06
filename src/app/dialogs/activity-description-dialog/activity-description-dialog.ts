@@ -1,6 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { FormGroup, FormBuilder, FormArray, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, FormArray, Validators, FormControl } from '@angular/forms';
 import { Material } from 'src/app/models/material';
 
 export interface activityDescriptionData {
@@ -24,7 +24,7 @@ export class ActivityDescriptionDialog implements OnInit {
     ngOnInit(): void {
         let materials: any[] = this.initMaterials()
         this.form = this.fb.group({
-            description: [this.data.description, []],
+            description: [this.data.description, [Validators.required]],
             materials: this.fb.array(materials)
         });
     }
@@ -33,8 +33,12 @@ export class ActivityDescriptionDialog implements OnInit {
         let materials: any = []
         if (this.data.materials) {
             this.data.materials.forEach(mat => {
-                materials.push(this.fb.group(mat))
-            });
+                let tmpFormControl = {
+                    label: new FormControl(mat.label, [Validators.required]),
+                    amount: new FormControl(mat.amount, [Validators.required])
+                }
+                materials.push(this.fb.group(tmpFormControl))
+            })
         } else {
             materials = [this.createItem()]
         }
@@ -55,9 +59,9 @@ export class ActivityDescriptionDialog implements OnInit {
 
     createItem() {
         return this.fb.group({
-            label: '',
-            amount: 1
-        });
+            label: new FormControl('', [Validators.required]),
+            amount: new FormControl(1, [Validators.required])
+        })
     }
 
     onAddMaterial() {

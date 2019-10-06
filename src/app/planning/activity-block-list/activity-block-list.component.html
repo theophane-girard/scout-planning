@@ -8,7 +8,9 @@
             </div>
             <div fxLayout="row" class="text-align-center">
                 <div fxFlex="80" class="margin-auto">
-                    {{ activity.description ? activity.description : LANG.GENERAL.WITHOUT_DESCRIPTION}}
+                    <div class="text-align-left white-space-pre-line margin-auto width-fit-content">
+                        {{ activity.description ? activity.description : LANG.GENERAL.WITHOUT_DESCRIPTION}}
+                    </div>
                 </div>
                 <div *ngIf="!isPreview" fxFlex="20">
                     <button mat-mini-fab aria-label="Modifier description" (click)="openActivityDescDialog(activity)">
@@ -21,10 +23,12 @@
                     ({{time_convert(activity.duration)}})
                 </p>
             </div>
-            <div class="margin-left-20px" *ngIf="showMaterial && activity.materials" fxLayout="column" fxLayoutAlign="start start">
+            <div class="margin-left-20px" *ngIf="showMaterial && activity.materials" fxLayout="column"
+                fxLayoutAlign="start start">
                 <h4>Materiel</h4>
                 <p fxFlex="80" fxLayout="column">
-                    <mat-checkbox *ngFor="let material of activity.materials">{{material.amount}} {{material.label}}</mat-checkbox>
+                    <mat-checkbox *ngFor="let material of activity.materials">{{material.amount}} {{material.label}}
+                    </mat-checkbox>
                 </p>
             </div>
             <div>

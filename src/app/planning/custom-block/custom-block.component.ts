@@ -11,12 +11,16 @@ import { LANG } from "../../core/lang";
 })
 export class CustomBlockComponent implements OnInit {
   timeBlocks: TimeBlock[] = []
+  duration: number = 0
   readonly LANG = LANG
 
   constructor(private customBlockService: CustomBlockService) { }
 
   ngOnInit() {
-    this.customBlockService.$timeBlock.subscribe(customBlocks => this.timeBlocks = customBlocks)
+    this.customBlockService.$timeBlock.subscribe(customBlocks => {
+      this.timeBlocks = customBlocks
+      this.duration = customBlocks[0].duration
+    })
     this.customBlockService.notifyCustomBlocksChanged()
   }
 
