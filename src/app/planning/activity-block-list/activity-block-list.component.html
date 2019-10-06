@@ -2,34 +2,37 @@
     <div *ngFor="let activityBlock of activityBlocks" cdkDropList [cdkDropListData]="activityBlock.activities"
         class="block-list" (cdkDropListDropped)="drop($event, activityBlock)">
         <h2 class="activity-block-label">{{activityBlock.label}}</h2>
-        <div class="block-box" *ngFor="let activity of activityBlock.activities" cdkDrag>
+        <div class="block-box" *ngFor="let activity of activityBlock.activities; let index = index" cdkDrag>
             <div>
                 {{time_convert(activity.startHour)}}
             </div>
-            <div fxLayout="row" class="text-align-center">
-                <div fxFlex="80" class="margin-auto">
-                    <div class="text-align-left white-space-pre-line margin-auto width-fit-content">
+            <div fxLayout="row">
+                <div fxFlex="80" class="padding-left-20">
+                    <div class="text-align-left white-space-pre-line width-fit-content word-break-break-all">
                         {{ activity.description ? activity.description : LANG.GENERAL.WITHOUT_DESCRIPTION}}
                     </div>
                 </div>
                 <div *ngIf="!isPreview" fxFlex="20">
-                    <button mat-mini-fab aria-label="Modifier description" (click)="openActivityDescDialog(activity)">
+                    <button mat-mini-fab aria-label="Modifier description" (click)="openActivityDescDialog(activityBlock, activity, index)">
                         <mat-icon>edit</mat-icon>
                     </button>
                 </div>
             </div>
-            <div *ngIf="showActDuration" fxLayout="row" class="text-align-center">
+            <div *ngIf="showActDuration" fxLayout="row" class="padding-left-20">
                 <p fxFlex="80">
                     ({{time_convert(activity.duration)}})
                 </p>
             </div>
-            <div class="margin-left-20px" *ngIf="showMaterial && activity.materials" fxLayout="column"
-                fxLayoutAlign="start start">
-                <h4>Materiel</h4>
-                <p fxFlex="80" fxLayout="column">
-                    <mat-checkbox *ngFor="let material of activity.materials">{{material.amount}} {{material.label}}
-                    </mat-checkbox>
-                </p>
+            <div class="padding-left-20" *ngIf="showMaterial && activity.materials">
+                <div *ngIf="activity.materials.length > 0" fxLayout="column"
+                        fxLayoutAlign="start start">
+                    <h4 class="margin-bottom-auto">Materiel</h4>
+                    <p fxFlex="80" fxLayout="column">
+                        <mat-checkbox *ngFor="let material of activity.materials">
+                            {{material.amount}} {{material.label}}
+                        </mat-checkbox>
+                    </p>
+                </div>
             </div>
             <div>
                 {{time_convert(activity.endHour)}}

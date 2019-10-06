@@ -2,9 +2,12 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { FormGroup, FormBuilder, FormArray, Validators, FormControl } from '@angular/forms';
 import { Material } from 'src/app/models/material';
+import { CoreFunctionService } from 'src/app/core/core-function.service';
 
 export interface activityDescriptionData {
-    description: string;
+    isFirst: boolean
+    duration: number
+    description: string
     materials: Material[]
 }
 
@@ -15,6 +18,7 @@ export interface activityDescriptionData {
 })
 export class ActivityDescriptionDialog implements OnInit {
     form: FormGroup
+    isFirst: boolean = false
     constructor(
         private fb: FormBuilder,
         public dialogRef: MatDialogRef<ActivityDescriptionDialog>,
@@ -24,9 +28,15 @@ export class ActivityDescriptionDialog implements OnInit {
     ngOnInit(): void {
         let materials: any[] = this.initMaterials()
         this.form = this.fb.group({
-            description: [this.data.description, [Validators.required]],
+            duration: [this.data.duration, [Validators.required]],
+            description: [this.data.description, []],
             materials: this.fb.array(materials)
         });
+        this.isFirst = this.data.isFirst
+
+        if (this.isFirst === true) {
+            this.form.addControl('startHour', new FormControl(14.5, Validators.required))
+        }
     }
 
     initMaterials(): any[] {
@@ -49,9 +59,9 @@ export class ActivityDescriptionDialog implements OnInit {
         this.dialogRef.close(this.form.value);
     }
 
-    onNoClick(): void {
-        this.dialogRef.close();
-    }
+    // onNoClick(): void {
+    //     this.dialogRef.close();
+    // }
 
     getMaterials(): FormArray {
         return this.form.get('materials') as FormArray;
@@ -70,5 +80,9 @@ export class ActivityDescriptionDialog implements OnInit {
 
     deleteMaterial(index: number) {
         this.getMaterials().removeAt(index)
+    }
+
+    convertToHour(value :number) : string {
+        return CoreFunctionService.time_convert(value)
     }
 }

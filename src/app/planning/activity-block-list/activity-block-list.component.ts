@@ -4,7 +4,6 @@ import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/dr
 import { CoreFunctionService } from '../../core/core-function.service';
 import { TimeBlockListService } from 'src/app/planning/time-block-list.service';
 import { MatDialog } from '@angular/material/dialog';
-import { StartHourDialog } from 'src/app/dialogs/start-hour/start-hour-dialog';
 import { ActivityDescriptionDialog } from 'src/app/dialogs/activity-description-dialog/activity-description-dialog';
 import { Activity } from 'src/app/models/activity';
 import { CustomBlockService } from 'src/app/planning/custom-block.service';
@@ -20,7 +19,7 @@ import { DisplaySettingsService } from '../display-settings.service';
 export class ActivityBlockListComponent implements OnInit {
 
   activityBlocks: ActivityBlock[] = []
-  readonly LANG= LANG
+  readonly LANG = LANG
   @Input() isPreview: boolean = false
   showMaterial: boolean
   showActDuration: boolean
@@ -50,14 +49,12 @@ export class ActivityBlockListComponent implements OnInit {
     if (event.previousContainer === event.container) {
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
     } else {
-      if (event.container.data.length === 0) {
-        this.openStartHourDialog(activityBlock)
-      }
       transferArrayItem(
         event.previousContainer.data,
         event.container.data,
         event.previousIndex,
         event.currentIndex)
+      this.openActivityDescDialog(activityBlock, event.container.data[event.currentIndex], event.currentIndex)
       this.customBlockService.deleteTimeBlockByDuration(event.container.data[event.currentIndex].duration)
       this.customBlockService.resetTimeBlockList(event.container.data[event.currentIndex], event.previousIndex)
       this.timeBlockListService.deleteTimeBlockByDuration(event.container.data[event.currentIndex].duration)
@@ -78,36 +75,28 @@ export class ActivityBlockListComponent implements OnInit {
   }
 
   /**
-   * Open dialog to fill start hour
-   * @param activityBlock ActivityBlock
-   */
-  openStartHourDialog(activityBlock: ActivityBlock): void {
-    const dialogRef = this.dialog.open(StartHourDialog, {
-      width: '400px',
-      data: {}
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-      activityBlock.startHour = result
-      this.updateActivityHours(activityBlock)
-    });
-  }
-
-  /**
    * 
    * @param activityBlock ActivityBlock
    */
-  openActivityDescDialog(activity: Activity): void {
+  openActivityDescDialog(activityBlock: ActivityBlock, activity: Activity, index: number = null): void {
+    let tmpData: any = activity
+    tmpData.isFirst = index === 0 ? true : false
     const dialogRef = this.dialog.open(ActivityDescriptionDialog, {
       width: '500px',
-      data: activity
+      data: tmpData,
+      disableClose: tmpData.isFirst
     });
 
     dialogRef.afterClosed().subscribe(act => {
       activity.description = act.description
+      activity.duration = act.duration
       if (act.materials) {
         activity.materials = act.materials
       }
+      if (act.startHour) {
+        activityBlock.startHour = act.startHour
+      }
+      this.updateActivityHours(activityBlock)
     });
   }
 

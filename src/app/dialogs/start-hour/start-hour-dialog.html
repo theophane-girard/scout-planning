@@ -1,8 +1,0 @@
-<h1 mat-dialog-title>Saisissez l'heure du début des activités</h1>
-<div mat-dialog-content>
-    <p>Heure de début : {{ convertToHour(hour) }}</p>
-    <mat-slider thumbLabel [displayWith]="convertToHour" [(ngModel)]="hour" [displayWith]="formatLabel" tickInterval="0.5" min="0" max="24" step="0.5"></mat-slider>
-</div>
-<div mat-dialog-actions>
-    <button mat-button [mat-dialog-close]="hour" cdkFocusInitial>Ok</button>
-</div>

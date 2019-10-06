@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ActivityBlockListComponent } from './activity-block-list/activity-block-list.component';
 import { MaterialModule } from '../material.module';
-import { StartHourDialog } from '../dialogs/start-hour/start-hour-dialog';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ActivityDescriptionDialog } from '../dialogs/activity-description-dialog/activity-description-dialog';
 import { TimeBlockListComponent } from './time-block-list/time-block-list.component';
@@ -13,8 +12,7 @@ import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
-    ActivityBlockListComponent, 
-    StartHourDialog, 
+    ActivityBlockListComponent,
     ActivityDescriptionDialog,
     TimeBlockListComponent,
     SettingsMenuComponent,
@@ -29,7 +27,6 @@ import { RouterModule } from '@angular/router';
     ReactiveFormsModule
   ],
   entryComponents: [
-    StartHourDialog,
     ActivityDescriptionDialog
   ],
   exports: [
