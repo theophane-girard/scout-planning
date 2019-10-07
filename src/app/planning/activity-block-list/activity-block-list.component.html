@@ -19,9 +19,9 @@
                 </div>
             </div>
             <div *ngIf="showActDuration" fxLayout="row" class="padding-left-20">
-                <p fxFlex="80">
+                <div fxFlex="80">
                     ({{time_convert(activity.duration)}})
-                </p>
+                </div>
             </div>
             <div class="padding-left-20" *ngIf="showMaterial && activity.materials">
                 <div *ngIf="activity.materials.length > 0" fxLayout="column"

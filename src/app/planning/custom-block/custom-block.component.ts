@@ -19,7 +19,9 @@ export class CustomBlockComponent implements OnInit {
   ngOnInit() {
     this.customBlockService.$timeBlock.subscribe(customBlocks => {
       this.timeBlocks = customBlocks
-      this.duration = customBlocks[0].duration
+      if (customBlocks[0]) {
+        this.duration = customBlocks[0].duration  
+      }
     })
     this.customBlockService.notifyCustomBlocksChanged()
   }
