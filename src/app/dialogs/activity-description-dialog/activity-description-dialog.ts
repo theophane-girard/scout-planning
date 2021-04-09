@@ -35,7 +35,8 @@ export class ActivityDescriptionDialog implements OnInit {
         this.isFirst = this.data.isFirst
 
         if (this.isFirst === true) {
-            this.form.addControl('startHour', new FormControl(14.5, Validators.required))
+            this.form.addControl('startHour', new FormControl('14:30 PM', Validators.required))
+            this.form.addControl('startHourToNumber', new FormControl(null))
         }
     }
 
@@ -56,6 +57,9 @@ export class ActivityDescriptionDialog implements OnInit {
     }
 
     save(): void {
+        if (this.form.controls.startHour) {
+            this.form.controls.startHourToNumber.setValue(CoreFunctionService.timeToNumber(this.form.controls.startHour.value))
+        }
         this.dialogRef.close(this.form.value);
     }
 
@@ -83,6 +87,6 @@ export class ActivityDescriptionDialog implements OnInit {
     }
 
     convertToHour(value :number) : string {
-        return CoreFunctionService.time_convert(value)
+        return CoreFunctionService.numberToTime(value)
     }
 }

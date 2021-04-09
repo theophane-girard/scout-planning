@@ -15,6 +15,7 @@ import { PDFExportModule } from '@progress/kendo-angular-pdf-export';
 import { MatCardModule } from '@angular/material/card';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
 
 @NgModule({
     imports:
@@ -35,6 +36,7 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
             MatCardModule,
             MatExpansionModule,
             MatSlideToggleModule,
+            NgxMaterialTimepickerModule.setLocale('fr-FR'),
         ],
     exports:
         [
@@ -54,6 +56,7 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
             MatCardModule,
             MatExpansionModule,
             MatSlideToggleModule,
+            NgxMaterialTimepickerModule,
         ],
 })
 export class MaterialModule { }

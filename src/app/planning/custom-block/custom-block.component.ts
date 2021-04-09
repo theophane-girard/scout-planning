@@ -30,7 +30,7 @@ export class CustomBlockComponent extends TimeBlockListComponent implements OnIn
   }
 
   convertToHour(number: number) {
-    return CoreFunctionService.time_convert(number)
+    return CoreFunctionService.numberToTime(number)
   }
 
   onChange(event) {

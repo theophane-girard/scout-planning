@@ -21,7 +21,7 @@ export class CustomBlockService extends TimeBlockListService {
       }
     ])
     this.timeBlocks.forEach(bloc => {
-      bloc.label = CoreFunctionService.time_convert(bloc.duration)
+      bloc.label = CoreFunctionService.numberToTime(bloc.duration)
     });
     this.maxBlocks = this.timeBlocks.length
   }
@@ -51,7 +51,7 @@ export class CustomBlockService extends TimeBlockListService {
    */
   public setCustomValue(value) {
     this.timeBlocks[0].duration = value
-    this.timeBlocks[0].label = CoreFunctionService.time_convert(this.timeBlocks[0].duration)
+    this.timeBlocks[0].label = CoreFunctionService.numberToTime(this.timeBlocks[0].duration)
     this.notifyChanges()
   }
 }
