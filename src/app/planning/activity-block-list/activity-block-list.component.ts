@@ -70,7 +70,7 @@ export class ActivityBlockListComponent implements OnInit {
    * @param num 
    */
   time_convert(num: number): string {
-    let result = CoreFunctionService.time_convert(num)
+    let result = CoreFunctionService.numberToTime(num)
     return result
   }
 
@@ -93,8 +93,8 @@ export class ActivityBlockListComponent implements OnInit {
       if (act.materials) {
         activity.materials = act.materials
       }
-      if (act.startHour) {
-        activityBlock.startHour = act.startHour
+      if (act.startHourToNumber) {
+        activityBlock.startHour = act.startHourToNumber
       }
       this.updateActivityHours(activityBlock)
     });

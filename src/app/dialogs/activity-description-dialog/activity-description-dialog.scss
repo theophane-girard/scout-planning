@@ -1,3 +1,19 @@
 mat-slider {
   width: 100%;
 }
+
+::ng-deep {
+
+    .timepicker-backdrop-overlay{
+        z-index: 9999 !important;
+    }
+
+    .timepicker-overlay{
+        z-index: 9999 !important;
+    }
+
+    #time-picker {
+        display: flex;
+    }
+
+}

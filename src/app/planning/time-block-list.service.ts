@@ -31,7 +31,7 @@ export class TimeBlockListService {
       }
     ];
     this.timeBlocks.forEach(bloc => {
-      bloc.label = CoreFunctionService.time_convert(bloc.duration)
+      bloc.label = CoreFunctionService.numberToTime(bloc.duration)
     });
 
     this.maxBlocks = this.timeBlocks.length
