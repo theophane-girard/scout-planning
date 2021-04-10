@@ -81,6 +81,7 @@ export class ActivityBlockListComponent implements OnInit {
   openActivityDescDialog(activityBlock: ActivityBlock, activity: Activity, index: number = null): void {
     let tmpData: any = activity
     tmpData.isFirst = index === 0 ? true : false
+    tmpData.activityBlock = activityBlock
     const dialogRef = this.dialog.open(ActivityDescriptionDialog, {
       width: '500px',
       data: tmpData,

@@ -35,7 +35,7 @@ describe('CoreFunctionService', () => {
     let hour: string = CoreFunctionService.numberToTime(num)
     expect(hour).toEqual('0h');
   });
-  it('should be "3h05"', () => {
+  it('should be "3h05min"', () => {
     const num: number = 3.08
     let hour: string = CoreFunctionService.numberToTime(num)
     expect(hour).toEqual('3h05min');
@@ -50,6 +50,52 @@ describe('CoreFunctionService', () => {
     let hour: string = CoreFunctionService.numberToTime(num)
     expect(hour).toEqual('13h30min');
   });
+  
+  //timeToNumberString
+
+  it('should be "00:05"', () => {
+    const num: number = 0.08
+    let hour: string = CoreFunctionService.numberToTimeString(num)
+    expect(hour).toEqual('00:05');
+  });
+  it('should be "00:15"', () => {
+    const num: number = 0.25
+    let hour: string = CoreFunctionService.numberToTimeString(num)
+    expect(hour).toEqual('00:15');
+  });
+  it('should be "02:15"', () => {
+    const num: number = 2.25
+    let hour: string = CoreFunctionService.numberToTimeString(num)
+    expect(hour).toEqual('02:15');
+  });
+  it('should be "03:00"', () => {
+    const num: number = 3
+    let hour: string = CoreFunctionService.numberToTimeString(num)
+    expect(hour).toEqual('03:00');
+  });
+  it('should be "00:00"', () => {
+    const num: number = 0
+    let hour: string = CoreFunctionService.numberToTimeString(num)
+    expect(hour).toEqual('00:00');
+  });
+  it('should be "03:05"', () => {
+    const num: number = 3.08
+    let hour: string = CoreFunctionService.numberToTimeString(num)
+    expect(hour).toEqual('03:05');
+  });
+  it('should be "13:05"', () => {
+    const num: number = 13.08
+    let hour: string = CoreFunctionService.numberToTimeString(num)
+    expect(hour).toEqual('13:05');
+  });
+  it('should be "13:30"', () => {
+    const num: number = 13.5
+    let hour: string = CoreFunctionService.numberToTimeString(num)
+    expect(hour).toEqual('13:30');
+  });
+
+  //timeToNumber
+
   it('should be "13.5"', () => {
     const time: string = '13:30 PM'
     let hour: number = CoreFunctionService.timeToNumber(time)
