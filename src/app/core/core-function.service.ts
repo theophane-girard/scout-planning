@@ -44,4 +44,30 @@ export class CoreFunctionService {
     }
     return result
   }
+
+  static numberToTimeString(num) : string {
+    let result: string = ""
+    let hours = Math.floor(num);
+    let minutes = Math.round(((num - Math.floor(num)) * 60))
+    if (hours > 0) {
+      if (hours < 10) {
+        result += 0
+      }
+      result += hours + ':'
+    } else {
+      result += '00:'
+    }
+    if (minutes > 0) {
+        if (minutes < 10) {
+          result += 0
+        }
+      result += minutes
+    } else {
+      result += '00'
+    }
+    if (result === "") {
+      result = '00:00'
+    }
+    return result
+  }
 }
