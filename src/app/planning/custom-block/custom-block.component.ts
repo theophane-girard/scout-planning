@@ -3,18 +3,21 @@ import { TimeBlock } from 'src/app/models/time-block';
 import { CustomBlockService } from '../custom-block.service';
 import { CoreFunctionService } from 'src/app/core/core-function.service';
 import { LANG } from "../../core/lang";
+import { TimeBlockListComponent } from '../time-block-list/time-block-list.component';
 
 @Component({
   selector: 'custom-block',
   templateUrl: './custom-block.component.html',
   styleUrls: ['./custom-block.component.scss']
 })
-export class CustomBlockComponent implements OnInit {
+export class CustomBlockComponent extends TimeBlockListComponent implements OnInit {
   timeBlocks: TimeBlock[] = []
   duration: number = 0
   readonly LANG = LANG
 
-  constructor(private customBlockService: CustomBlockService) { }
+  constructor(private customBlockService: CustomBlockService) {
+    super(customBlockService)
+   }
 
   ngOnInit() {
     this.customBlockService.$timeBlock.subscribe(customBlocks => {

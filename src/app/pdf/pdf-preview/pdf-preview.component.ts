@@ -12,7 +12,7 @@ import { Activity } from 'src/app/models/activity';
 })
 export class PdfPreviewComponent implements OnInit {
   private actB: ActivityBlock[] = []
-  private materials: Material[] = []
+  public materials: Material[] = []
   readonly LANG = LANG
   @ViewChild('pdf', { static: false }) public pdf
 

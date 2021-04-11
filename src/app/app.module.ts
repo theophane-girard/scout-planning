@@ -7,12 +7,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from "./material.module";
 import { CoreModule } from './core/core.module';
 import { PlanningModule } from './planning/planning.module';
-import { PdfPreviewComponent } from './pdf/pdf-preview/pdf-preview.component';
+import { PdfModule } from './pdf/pdf.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    PdfPreviewComponent
   ],
   imports: [
     BrowserModule,
@@ -21,6 +20,7 @@ import { PdfPreviewComponent } from './pdf/pdf-preview/pdf-preview.component';
     MaterialModule,
     CoreModule,
     PlanningModule,
+    PdfModule,
   ],
   exports: [
     MaterialModule

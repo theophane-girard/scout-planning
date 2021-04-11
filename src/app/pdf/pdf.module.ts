@@ -5,6 +5,7 @@ import { PDFExportModule } from '@progress/kendo-angular-pdf-export';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from '../material.module';
 import { RouterModule } from '@angular/router';
+import { PlanningModule } from '../planning/planning.module';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { RouterModule } from '@angular/router';
     PDFExportModule,
     BrowserAnimationsModule,
     MaterialModule,
-    RouterModule
+    RouterModule,
+    PlanningModule,
   ],
   exports: [
     PdfPreviewComponent
