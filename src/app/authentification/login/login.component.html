@@ -1,0 +1,15 @@
+<h1>Ecran de connexion</h1>
+
+<mat-card>
+    <form (ngSubmit)="login()" [formGroup]="form">
+        <mat-form-field>
+            <input matInput placeholder="email" formControlName="email">
+        </mat-form-field>
+        <br>
+        <mat-form-field>
+            <input matInput type="password" placeholder="password" formControlName="password">
+        </mat-form-field>
+        <br>
+        <button mat-raised-button type="submit" color="accent">Connexion</button>
+    </form>
+</mat-card>

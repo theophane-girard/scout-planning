@@ -1,0 +1,5 @@
+<p>Liste de vos plannings</p>
+
+<mat-card *ngFor="let planning of plannings" (click)="goToPlanning(planning.id)">
+    {{ planning.name }}
+</mat-card>

@@ -9,6 +9,7 @@ import { SettingsMenuComponent } from './settings-menu/settings-menu.component';
 import { PlanningComponent } from './planning/planning.component';
 import { CustomBlockComponent } from './custom-block/custom-block.component';
 import { RouterModule } from '@angular/router';
+import { PlanningListComponent } from './planning-list/planning-list.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { RouterModule } from '@angular/router';
     TimeBlockListComponent,
     SettingsMenuComponent,
     PlanningComponent,
-    CustomBlockComponent
+    CustomBlockComponent,
+    PlanningListComponent
   ],
   imports: [
     CommonModule,

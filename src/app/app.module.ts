@@ -8,6 +8,9 @@ import { MaterialModule } from "./material.module";
 import { CoreModule } from './core/core.module';
 import { PlanningModule } from './planning/planning.module';
 import { PdfModule } from './pdf/pdf.module';
+import { AuthentificationModule } from './authentification/authentification.module';
+import { HttpClientModule } from '@angular/common/http';
+import { LoginActivate } from './authentification/guards/login-activate';
 
 @NgModule({
   declarations: [
@@ -21,11 +24,13 @@ import { PdfModule } from './pdf/pdf.module';
     CoreModule,
     PlanningModule,
     PdfModule,
+    AuthentificationModule,
+    HttpClientModule
   ],
   exports: [
     MaterialModule
   ],
-  providers: [],
+  providers: [LoginActivate],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

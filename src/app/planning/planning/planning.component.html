@@ -38,6 +38,7 @@
 			<h1 fxFlex="85" id="app-title">{{ LANG.GENERAL.TITLE_LABEL }}</h1>
 			<settings-menu fxFlex="15"></settings-menu>
 		</div>
+		<h3 *ngIf="planning">{{ planning.name }}</h3>
 		<activity-block-list></activity-block-list>
 	</div>
 </mat-drawer-container>
