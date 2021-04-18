@@ -73,6 +73,8 @@ export class InitDialog implements OnInit {
     }
   ]
 
+  choices: any[]
+
   constructor(
     private fb: FormBuilder,
     public dialogRef: MatDialogRef<InitDialog>,
@@ -81,6 +83,7 @@ export class InitDialog implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.choices = [this.oneDay, this.twoDays]
     this.form = this.fb.group({
       daysNumber: new FormControl(1)
     })

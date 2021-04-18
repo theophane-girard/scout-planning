@@ -33,7 +33,7 @@ export class ActivityService {
   }
 
   setDays(nb) {
-    if (nb !== 1) {
+    if (nb !== 0) {
       this.activityBlocks = [
         this.saturday,
         this.sunday
