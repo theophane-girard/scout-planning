@@ -6,7 +6,7 @@ import { CoreFunctionService } from 'src/app/core/core-function.service';
 import { CONFIG } from 'src/app/core/config';
 import { ActivityBlock } from 'src/app/models/activity-block';
 import { ActivityService } from 'src/app/planning/activities.service';
-
+import { LANG } from 'src/app/core/lang';
 export interface activityDescriptionData {
   isFirst: boolean
   duration: number
@@ -72,7 +72,7 @@ export class InitDialog implements OnInit {
       label: 'Dimanche'
     }
   ]
-
+  LANG = LANG
   choices: any[]
 
   constructor(
