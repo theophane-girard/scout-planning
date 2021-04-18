@@ -11,7 +11,7 @@
     "pree2e": "webdriver-manager update --versions.chrome 90.0.4430.24",
     "test:ci": "ng test --no-watch --no-progress --browsers ChromeHeadlessCI",
     "e2e:ci": "ng e2e --protractor-config=e2e/protractor-ci.conf.js --webdriver-update=false",
-    "e2e": "ng e2e --webdriver-update=false"
+    "e2e": "ng e2e"
   },
   "private": true,
   "dependencies": {
