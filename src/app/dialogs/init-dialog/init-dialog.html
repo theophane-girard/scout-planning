@@ -1,8 +1,8 @@
 <h1 mat-dialog-title>Saisissez le nombre de jours</h1>
 <div class="display-flex justify-content-space-around" mat-dialog-content [formGroup]="form">
-    <div class="display-flex width-45 justify-content-space-around margin-1vh" id="oneDay">
-        <mat-card fxLayout="row" fxLayoutAlign="space-around start" (click)="updateDaysNumber(1)">
-            <div *ngFor="let activityBlock of oneDay" class="block-list width-8vh font-size-07vh">
+    <div *ngFor="let choice of choices;let indexChoice = index" class="display-flex width-45 justify-content-space-around margin-1vh">
+        <mat-card fxLayout="row" fxLayoutAlign="space-around start" (click)="updateDaysNumber(indexChoice)">
+            <div *ngFor="let activityBlock of choice" class="block-list width-8vh font-size-07vh">
                 <h2 class="activity-block-label">{{activityBlock.label}}</h2>
                 <div class="block-box" *ngFor="let activity of activityBlock.activities; let index = index">
                     <div>
@@ -15,38 +15,6 @@
                             </div>
                         </div>
                         <div class="edit-button-section" *ngIf="!isPreview" fxFlex="20">
-                            <button class="transform-scale-02" mat-mini-fab aria-label="Modifier description">
-                                <mat-icon>edit</mat-icon>
-                            </button>
-                        </div>
-                    </div>
-                    <div *ngIf="showActDuration" fxLayout="row" class="padding-left-20">
-                        <div fxFlex="80">
-                            ({{time_convert(activity.duration)}})
-                        </div>
-                    </div>
-                    <div>
-                        {{time_convert(activity.endHour)}}
-                    </div>
-                </div>
-            </div>
-        </mat-card>
-    </div>
-    <div class="display-flex width-45 justify-content-space-around margin-1vh" id="twoDay">
-        <mat-card fxLayout="row" fxLayoutAlign="space-around start" (click)="updateDaysNumber(2)">
-            <div *ngFor="let activityBlock of twoDays" class="block-list width-8vh font-size-07vh">
-                <h2 class="activity-block-label">{{activityBlock.label}}</h2>
-                <div class="block-box" *ngFor="let activity of activityBlock.activities; let index = index">
-                    <div>
-                        {{time_convert(activity.startHour)}}
-                    </div>
-                    <div class="max-height-2vh" fxLayout="row">
-                        <div fxFlex="80" class="padding-left-20">
-                            <div class="text-align-left white-space-pre-line width-fit-content">
-                                {{ activity.description ? activity.description : LANG.GENERAL.WITHOUT_DESCRIPTION}}
-                            </div>
-                        </div>
-                        <div class="edit-button-section" *ngIf="!isPreview">
                             <button class="transform-scale-02" mat-mini-fab aria-label="Modifier description">
                                 <mat-icon>edit</mat-icon>
                             </button>
