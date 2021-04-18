@@ -14,13 +14,13 @@
                                 {{ activity.description ? activity.description : LANG.GENERAL.WITHOUT_DESCRIPTION}}
                             </div>
                         </div>
-                        <div class="edit-button-section" *ngIf="!isPreview" fxFlex="20">
+                        <div class="edit-button-section" fxFlex="20">
                             <button class="transform-scale-02" mat-mini-fab aria-label="Modifier description">
                                 <mat-icon>edit</mat-icon>
                             </button>
                         </div>
                     </div>
-                    <div *ngIf="showActDuration" fxLayout="row" class="padding-left-20">
+                    <div fxLayout="row" class="padding-left-20">
                         <div fxFlex="80">
                             ({{time_convert(activity.duration)}})
                         </div>
