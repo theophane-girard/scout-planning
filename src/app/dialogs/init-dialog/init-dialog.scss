@@ -1,0 +1,36 @@
+mat-slider {
+  width: 100%;
+}
+
+::ng-deep {
+
+    .timepicker-backdrop-overlay{
+        z-index: 9999 !important;
+    }
+
+    .timepicker-overlay{
+        z-index: 9999 !important;
+    }
+
+    #time-picker {
+        display: flex;
+    }
+
+    .block-list {
+        min-height: unset;
+    }
+
+    .activity-block-label {
+        margin-left: 1vh;
+    }
+
+    .edit-button-section {
+        flex: unset !important;
+        box-sizing: unset !important;
+        max-width: unset !important;
+    }
+
+    .block-box {
+        border-bottom: solid 1px #ccc;
+    }
+}
