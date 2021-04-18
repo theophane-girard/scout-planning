@@ -10,18 +10,17 @@ export class ActivityService {
   readonly LANG = LANG
   private activityBlocks: ActivityBlock[]
   public $activityBlocks: Subject<ActivityBlock[]> = new Subject<ActivityBlock[]>()
+  private saturday = {
+    activities: [],
+    label: LANG.GENERAL.SATURDAY_LABEL
+  }
+  private sunday = {
+    activities: [],
+    label: LANG.GENERAL.SUNDAY_LABEL
+  }
 
   constructor() {
-    this.activityBlocks = [
-      {
-        activities: [],
-        label: LANG.GENERAL.SATURDAY_LABEL
-      },
-      {
-        activities: [],
-        label: LANG.GENERAL.SUNDAY_LABEL
-      }
-    ]
+    this.activityBlocks = []
   }
 
   notifyChanges() {
@@ -31,5 +30,23 @@ export class ActivityService {
   setActivityBlocks(actB: ActivityBlock[]) {
     this.activityBlocks = actB
     this.notifyChanges()
+  }
+
+  setDays(nb) {
+    if (nb !== 1) {
+      this.activityBlocks = [
+        this.saturday,
+        this.sunday
+      ]
+    } else {
+      this.activityBlocks = [
+        this.sunday
+      ]
+    }
+    this.notifyChanges()
+  }
+
+  getDaysNumber() : number {
+    return this.activityBlocks.length
   }
 }
