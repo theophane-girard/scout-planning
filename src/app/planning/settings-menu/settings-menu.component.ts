@@ -28,9 +28,7 @@ export class SettingsMenuComponent implements OnInit {
   downloadAsJson() {
     if (this.activityBlocks.length > 0) {
       var blob = new Blob([JSON.stringify(this.activityBlocks)], { type: "text/plain;charset=utf-8" });
-      var url = window.URL.createObjectURL(blob);
       saveAs(blob, "planning.json");
-      window.open(url);
     } else {
       this.showMessage(LANG.ERRORS.EMPTY_PLANNING)
     }
