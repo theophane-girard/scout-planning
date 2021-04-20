@@ -80,14 +80,17 @@ export class InitDialog implements OnInit {
     public dialogRef: MatDialogRef<InitDialog>,
     @Inject(MAT_DIALOG_DATA) public data: activityDescriptionData,
     private activityBService: ActivityService
-  ) { }
-
-  ngOnInit(): void {
+  ) {     
     this.choices = [this.oneDay, this.twoDays]
     this.form = this.fb.group({
-      daysNumber: new FormControl(1)
+      daysNumber: new FormControl(0)
     })
+    this.activityBService.setDays(this.form.controls.daysNumber.value)
     this.form.controls.daysNumber.valueChanges.subscribe(nb => this.activityBService.setDays(nb))
+  }
+
+  ngOnInit(): void {
+
   }
 
   time_convert(num) {
