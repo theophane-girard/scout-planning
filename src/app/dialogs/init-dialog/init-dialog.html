@@ -1,7 +1,7 @@
-<h1 mat-dialog-title>Saisissez le nombre de jours</h1>
+<h1 mat-dialog-title>Choisissez le format - Actuellement {{ form.controls.daysNumber.value + 1 }} {{ form.controls.daysNumber.value > 0 ? 'jours' : 'jour' }}</h1>
 <div class="display-flex justify-content-space-around" mat-dialog-content [formGroup]="form">
     <div *ngFor="let choice of choices;let indexChoice = index" class="display-flex width-45 justify-content-space-around margin-1vh">
-        <mat-card fxLayout="row" fxLayoutAlign="space-around start" (click)="updateDaysNumber(indexChoice)">
+        <mat-card fxLayout="row" fxLayoutAlign="space-around start" (click)="updateDaysNumber(indexChoice)" [ngClass]="{'selected': form.controls.daysNumber.value === indexChoice}">
             <div *ngFor="let activityBlock of choice" class="block-list width-8vh font-size-07vh">
                 <h2 class="activity-block-label">{{activityBlock.label}}</h2>
                 <div class="block-box" *ngFor="let activity of activityBlock.activities; let index = index">
@@ -34,5 +34,5 @@
     </div>
 </div>
 <div mat-dialog-actions>
-    <button mat-button [disabled]="form.invalid" (click)="save()" cdkFocusInitial>Ok</button>
+  <button mat-button [disabled]="form.invalid" (click)="save()" cdkFocusInitial>Ok</button>
 </div>
