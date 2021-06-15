@@ -16,4 +16,8 @@ mat-slider {
         display: flex;
     }
 
+    .mat-dialog-content {
+      overflow: overlay;
+    }
+
 }
