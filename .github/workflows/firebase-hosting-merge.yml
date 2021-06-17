@@ -12,6 +12,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - run : npm install
+      - run : npm run pree2e
       - run : npm run test:ci
       - run : npm run e2e:ci
       - run : npm run build:prod
